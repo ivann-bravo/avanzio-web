@@ -152,7 +152,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="text-xl font-black text-white mb-3">Tienda Online</h3>
                   <p className="text-slate-400 leading-relaxed mb-5 flex-grow text-sm">
-                    E-commerce con MercadoPago, AFIP y logística local. Todo lo que necesita un negocio argentino para vender online desde el día uno.
+                    E-commerce con MercadoPago, ARCA y logística local. Todo lo que necesita un negocio argentino para vender online desde el día uno.
                   </p>
                   <Link
                     href="/servicios"
@@ -251,7 +251,7 @@ export default function HomePage() {
                 </p>
                 <blockquote className="border-l-2 border-[#4f46e5] pl-4 mb-6">
                   <p className="text-slate-300 italic text-sm">"No solo creamos sistemas para otros, los usamos todos los días. Sabemos lo que es depender de tu propio código."</p>
-                  <footer className="text-slate-500 text-xs mt-2">— Iván, co-fundador NexoDev</footer>
+                  <footer className="text-slate-500 text-xs mt-2">— Iván, co-fundador Avanzio</footer>
                 </blockquote>
                 <div className="flex flex-wrap gap-2">
                   {["WooCommerce", "PHP", "JavaScript", "Node.js", "TypeScript"].map((t) => (
@@ -293,11 +293,11 @@ export default function HomePage() {
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">E-commerce</span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white mb-4">Santa Benedetta</h3>
                 <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                  Tienda online completa para fiambrería artesanal. Catálogo, envío local y pasarela de pago argentina. El primer cliente externo de NexoDev.
+                  Tienda online completa para fiambrería artesanal. Catálogo, envío local y pasarela de pago argentina. El primer cliente externo de Avanzio.
                 </p>
                 <blockquote className="border-l-2 border-amber-500 pl-4 mb-6">
                   <p className="text-slate-300 italic text-sm">"Trabajamos codo a codo con el dueño para que la tienda refleje la identidad de su negocio."</p>
-                  <footer className="text-slate-500 text-xs mt-2">— Magalí, co-fundadora NexoDev</footer>
+                  <footer className="text-slate-500 text-xs mt-2">— Magalí, co-fundadora Avanzio</footer>
                 </blockquote>
                 <div className="flex flex-wrap gap-2">
                   {["E-commerce", "MercadoPago", "WordPress", "WooCommerce"].map((t) => (

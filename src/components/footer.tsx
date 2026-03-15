@@ -16,7 +16,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="material-symbols-outlined text-[#4f46e5] text-2xl">code_blocks</span>
-              <span className="text-xl font-bold text-white">NexoDev</span>
+              <span className="text-xl font-bold text-white">Avanzio</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Tu socio tecnológico para crecer con sistemas que realmente funcionan.
@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-400 text-sm">
               <li className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">mail</span>
-                hola@nexodev.com.ar
+                hola@avanzio.com.ar
               </li>
               <li className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">chat</span>
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[#334155] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm">
-          <p>© 2026 NexoDev. Todos los derechos reservados.</p>
+          <p>© 2026 Avanzio. Todos los derechos reservados.</p>
           <p>Hecho con ❤️ en Argentina</p>
         </div>
       </div>

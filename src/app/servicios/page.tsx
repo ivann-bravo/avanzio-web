@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Sistemas a medida, tiendas online y paneles de gestión para PyMEs argentinas. MercadoPago, AFIP, soporte real.",
+    "Sistemas a medida, tiendas online y paneles de gestión para PyMEs argentinas. MercadoPago, ARCA, soporte real.",
 };
 
 export default function ServiciosPage() {
@@ -154,13 +154,13 @@ export default function ServiciosPage() {
                 <h2 className="text-4xl font-bold text-white mb-4">Tienda Online</h2>
                 <p className="text-lg text-slate-400 leading-relaxed mb-8">
                   E-commerce robusto con las integraciones que necesita un negocio argentino.
-                  MercadoPago, AFIP, logística local — todo listo desde el día uno.
+                  MercadoPago, ARCA, logística local — todo listo desde el día uno.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { icon: "payments", title: "MercadoPago", desc: "Cobros seguros al instante" },
-                  { icon: "receipt_long", title: "Facturación AFIP", desc: "Automática y sin errores" },
+                  { icon: "receipt_long", title: "Facturación ARCA", desc: "Automática y sin errores" },
                   { icon: "inventory_2", title: "Catálogo", desc: "Sin límite de productos ni categorías" },
                   { icon: "local_shipping", title: "Envíos", desc: "Logística local integrada" },
                 ].map((item) => (
@@ -313,7 +313,7 @@ export default function ServiciosPage() {
                 a: "El soporte post-lanzamiento está incluido en todos nuestros proyectos. Para evoluciones mayores, acordamos un plan de mantenimiento según tus necesidades.",
               },
               {
-                q: "¿Tienen experiencia con AFIP y MercadoPago?",
+                q: "¿Tienen experiencia con ARCA y MercadoPago?",
                 a: "Sí. Ya integramos ambas herramientas en proyectos reales. Conocemos los quirks del ecosistema tecnológico local.",
               },
             ].map((item) => (

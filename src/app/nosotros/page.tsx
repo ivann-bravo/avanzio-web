@@ -34,7 +34,7 @@ export default function NosotrosPage() {
             </span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl leading-relaxed">
-            No somos una agencia. Cuando contratás a NexoDev, trabajás directamente
+            No somos una agencia. Cuando contratás a Avanzio, trabajás directamente
             con nosotros — desde la primera reunión hasta el soporte post-lanzamiento.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function NosotrosPage() {
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 font-semibold uppercase tracking-widest mb-1">Hoy</p>
-                  <h3 className="font-bold text-white mb-1">NexoDev</h3>
+                  <h3 className="font-bold text-white mb-1">Avanzio</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
                     Abiertos a nuevos proyectos. Creciendo junto a las PyMEs del país con tecnología que resuelve problemas concretos.
                   </p>
@@ -144,7 +144,7 @@ export default function NosotrosPage() {
               <h3 className="text-xl font-bold text-white mb-1">Magalí</h3>
               <p className="text-amber-400 text-sm font-semibold mb-4">Co-fundadora · Frontend &amp; UX</p>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Estudiante avanzada de Sistemas. Foco en interfaces, experiencia de usuario y relación con el cliente. Cara visible de NexoDev.
+                Estudiante avanzada de Sistemas. Foco en interfaces, experiencia de usuario y relación con el cliente. Cara visible de Avanzio.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["React", "Next.js", "Tailwind", "Figma"].map((tag) => (
@@ -221,7 +221,7 @@ export default function NosotrosPage() {
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <h2 className="text-4xl font-extrabold text-white mb-6">¿Trabajamos juntos?</h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-            Somos un equipo chico, y eso es una ventaja: cuando trabajás con NexoDev, trabajás directamente con nosotros.
+            Somos un equipo chico, y eso es una ventaja: cuando trabajás con Avanzio, trabajás directamente con nosotros.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

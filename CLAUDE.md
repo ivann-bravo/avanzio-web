@@ -3,7 +3,7 @@
 ## Sobre el Proyecto
 Sitio web corporativo para una empresa de desarrollo de software a medida orientada a PyMEs argentinas con proyección LATAM. Fundada por Iván y Magalí, estudiantes avanzados de Sistemas ubicados en Banfield, Buenos Aires.
 
-**Nombre de la empresa:** [PLACEHOLDER] — Usar "NexoDev" como placeholder hasta definir el nombre final. Reemplazar en todos los archivos cuando se defina.
+**Nombre de la empresa:** Avanzio
 
 **Propuesta de valor central:** "Tu socio tecnológico, no un proveedor más." Cercanía real, sistemas que resuelven problemas concretos, acompañamiento continuo.
 
@@ -58,7 +58,7 @@ Cada caso sigue este formato narrativo:
 
 ## Servicios ofrecidos
 1. **Sistema a medida** — Desarrollo completo adaptado al negocio del cliente
-2. **Tienda online** — E-commerce con integraciones argentinas (MercadoPago, AFIP)
+2. **Tienda online** — E-commerce con integraciones argentinas (MercadoPago, ARCA)
 3. **Panel de gestión** — Herramientas internas para operaciones del negocio
 
 ## Identidad Visual (directrices)

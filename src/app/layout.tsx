@@ -14,17 +14,17 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | NexoDev",
-    default: "NexoDev — Software a Medida para PyMEs",
+    template: "%s | Avanzio",
+    default: "Avanzio — Software a Medida para PyMEs",
   },
   description:
     "Desarrollamos sistemas a medida, tiendas online y paneles de gestión para PyMEs argentinas. Tu socio tecnológico, no un proveedor más.",
   keywords: ["software a medida", "desarrollo web", "PyMEs Argentina", "e-commerce", "panel de gestión", "Banfield", "Buenos Aires"],
-  authors: [{ name: "NexoDev" }],
+  authors: [{ name: "Avanzio" }],
   openGraph: {
     type: "website",
     locale: "es_AR",
-    siteName: "NexoDev",
+    siteName: "Avanzio",
   },
 };
 

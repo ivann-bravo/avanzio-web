@@ -64,7 +64,7 @@ export default function CasosPage() {
                 <p className="text-slate-300 italic leading-relaxed mb-3">
                   &ldquo;No solo creamos sistemas para otros, los usamos nosotros mismos todos los días.&rdquo;
                 </p>
-                <p className="text-slate-500 text-sm">— Iván, co-fundador NexoDev</p>
+                <p className="text-slate-500 text-sm">— Iván, co-fundador Avanzio</p>
               </div>
               <div className="flex flex-wrap gap-2">
                 {["WooCommerce", "PHP", "JavaScript", "Node.js", "TypeScript"].map((tag) => (
@@ -180,7 +180,7 @@ export default function CasosPage() {
               </span>
               <h2 className="text-4xl font-bold text-white">Santa Benedetta</h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Tienda online para fiambrería artesanal. Catálogo completo, envío local, pasarela de pago argentina. El primer cliente externo de NexoDev.
+                Tienda online para fiambrería artesanal. Catálogo completo, envío local, pasarela de pago argentina. El primer cliente externo de Avanzio.
               </p>
               <div className="bg-[#1e293b] border-l-4 border-amber-400 rounded-r-xl p-6">
                 <span className="material-symbols-outlined text-amber-400 text-4xl block mb-3" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -189,7 +189,7 @@ export default function CasosPage() {
                 <p className="text-slate-300 italic leading-relaxed mb-3">
                   &ldquo;Trabajamos codo a codo con el dueño para que la tienda refleje la identidad de su negocio.&rdquo;
                 </p>
-                <p className="text-slate-500 text-sm">— Magalí, co-fundadora NexoDev</p>
+                <p className="text-slate-500 text-sm">— Magalí, co-fundadora Avanzio</p>
               </div>
               <div className="flex flex-wrap gap-2">
                 {["E-commerce", "MercadoPago", "WordPress", "WooCommerce"].map((tag) => (

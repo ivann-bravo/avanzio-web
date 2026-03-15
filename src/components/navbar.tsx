@@ -21,7 +21,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span className="material-symbols-outlined text-[#4f46e5] text-2xl">code_blocks</span>
-          <span className="text-xl font-bold text-white">NexoDev</span>
+          <span className="text-xl font-bold text-white">Avanzio</span>
         </Link>
 
         {/* Desktop nav */}

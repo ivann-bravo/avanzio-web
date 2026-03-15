@@ -10,7 +10,7 @@ interface TerminalLine {
 }
 
 const LINES: TerminalLine[] = [
-  { text: '$ nexodev build --cliente="tu-empresa"', type: 'command', delay: 600 },
+  { text: '$ avanzio build --cliente="tu-empresa"', type: 'command', delay: 600 },
   { text: '', type: 'empty', delay: 800 },
   { text: '▶  analizando procesos actuales...', type: 'running', delay: 1000 },
   { text: '✓  dolor detectado: gestión manual en planillas', type: 'success', delay: 1600 },
@@ -18,7 +18,7 @@ const LINES: TerminalLine[] = [
   { text: '', type: 'empty', delay: 2300 },
   { text: '▶  configurando integraciones argentinas...', type: 'running', delay: 2500 },
   { text: '✓  MercadoPago conectado', type: 'success', delay: 3100 },
-  { text: '✓  AFIP habilitado', type: 'success', delay: 3500 },
+  { text: '✓  ARCA habilitado', type: 'success', delay: 3500 },
   { text: '✓  TypeScript + Node.js + PostgreSQL', type: 'success', delay: 3900 },
   { text: '', type: 'empty', delay: 4100 },
   { text: '▶  desplegando sistema personalizado...', type: 'running', delay: 4300 },
@@ -45,7 +45,7 @@ export function TerminalHero() {
         <span className="w-3 h-3 rounded-full bg-red-500 block" />
         <span className="w-3 h-3 rounded-full bg-yellow-500 block" />
         <span className="w-3 h-3 rounded-full bg-emerald-500 block" />
-        <span className="ml-auto text-xs text-slate-600 font-mono">nexodev — bash</span>
+        <span className="ml-auto text-xs text-slate-600 font-mono">avanzio — bash</span>
       </div>
       {/* Content */}
       <div className="p-5 sm:p-6 font-mono text-[13px] sm:text-sm leading-relaxed min-h-[260px] sm:min-h-[320px]">

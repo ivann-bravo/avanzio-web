@@ -1,6 +1,6 @@
 const TECHS = [
   'TypeScript', 'Node.js', 'Next.js', 'React', 'WordPress',
-  'WooCommerce', 'MercadoPago', 'AFIP API', 'PostgreSQL',
+  'WooCommerce', 'MercadoPago', 'ARCA API', 'PostgreSQL',
   'Tailwind CSS', 'PHP', 'Vercel', 'Git', 'Docker',
 ]
 

@@ -152,7 +152,7 @@ export default function ContactoContent() {
                     <p className="text-xs text-slate-400">Para consultas formales</p>
                   </div>
                 </div>
-                <p className="text-[#4f46e5] text-sm font-semibold">hola@nexodev.com.ar</p>
+                <p className="text-[#4f46e5] text-sm font-semibold">hola@avanzio.com.ar</p>
               </div>
 
               {/* Ubicación */}
