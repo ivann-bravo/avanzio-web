@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import WhatsAppFAB from "@/components/whatsapp-fab";
+import { RevealInit } from "@/components/reveal-init";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-display",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -19,7 +27,7 @@ export const metadata: Metadata = {
   },
   description:
     "Desarrollamos sistemas a medida, tiendas online y paneles de gestión para PyMEs argentinas. Tu socio tecnológico, no un proveedor más.",
-  keywords: ["software a medida", "desarrollo web", "PyMEs Argentina", "e-commerce", "panel de gestión", "Banfield", "Buenos Aires"],
+  keywords: ["software a medida", "desarrollo web", "PyMEs Argentina", "e-commerce", "panel de gestión", "Buenos Aires"],
   authors: [{ name: "Avanzio" }],
   openGraph: {
     type: "website",
@@ -41,13 +49,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${plusJakartaSans.variable} font-display min-h-screen flex flex-col`}>
+      <body className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} font-display min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
         <WhatsAppFAB />
+        <RevealInit />
       </body>
     </html>
   );
