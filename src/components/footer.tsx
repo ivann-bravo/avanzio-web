@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AvanzioLogo, { AvanzioIsotipo } from "@/components/avanzio-logo";
 
 const navLinks = [
   { href: "/servicios", label: "Servicios" },
@@ -15,10 +16,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#7C3AED] to-[#A78BFA] flex items-center justify-center">
-                <span className="text-white font-black text-sm">A</span>
-              </div>
-              <span className="text-xl font-bold text-white">avanzio</span>
+              <AvanzioIsotipo size={28} />
+              <AvanzioLogo width={100} className="fill-white" />
             </div>
             <p className="text-slate-500 text-sm leading-relaxed mb-4">
               Tu socio tecnológico para crecer con sistemas que realmente funcionan.
@@ -49,7 +48,7 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-500 text-sm">
               <li className="flex items-start gap-2">
                 <span className="material-symbols-outlined text-sm shrink-0 mt-0.5">mail</span>
-                <span className="break-all">hola@avanzio.com.ar</span>
+                <span className="break-all">hola@avanzio.ar</span>
               </li>
               <li className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

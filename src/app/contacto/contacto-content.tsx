@@ -156,7 +156,7 @@ export default function ContactoContent() {
                     <p className="text-xs text-slate-400">Para consultas formales</p>
                   </div>
                 </div>
-                <p className="text-[#8B5CF6] text-sm font-semibold">hola@avanzio.com.ar</p>
+                <p className="text-[#8B5CF6] text-sm font-semibold">hola@avanzio.ar</p>
               </div>
 
               {/* Ubicación */}

@@ -1,4 +1,5 @@
 // TransformationSection — horizontal ticker (desktop) + vertical two-column (mobile)
+import AvanzioLogo, { AvanzioIsotipo } from "@/components/avanzio-logo";
 
 // ─── DESKTOP: full-width window cards ───────────────────────────────────────
 
@@ -442,21 +443,11 @@ function AfterMobileStack() {
 
 function CenterLogo() {
   return (
-    <div className="flex flex-col items-center gap-1.5">
-      <div
-        className="w-12 h-12 md:w-20 md:h-20 rounded-full flex items-center justify-center"
-        style={{
-          background: "radial-gradient(circle, #8B5CF6 0%, #7C3AED 50%, #4C1D95 100%)",
-          boxShadow: "0 0 40px rgba(124,58,237,0.7), 0 0 80px rgba(124,58,237,0.3)",
-        }}
-      >
-        <span className="text-white font-black text-xl md:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
-          A
-        </span>
-      </div>
-      <span className="text-[8px] md:text-[10px] font-bold tracking-[0.25em] text-[#A78BFA]">
-        AVANZIO
-      </span>
+    <div className="flex flex-col items-center gap-2">
+      <AvanzioIsotipo
+        size={62}
+        className="md:!w-20 md:!h-20 [box-shadow:0_0_40px_rgba(124,58,237,0.7),0_0_80px_rgba(124,58,237,0.3)]"
+      />
     </div>
   );
 }

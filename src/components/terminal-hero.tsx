@@ -21,7 +21,7 @@ const LINES: TerminalLine[] = [
   { text: '✓  MercadoPago + ARCA integrados', type: 'success', delay: 3700 },
   { text: '', type: 'empty', delay: 4000 },
   { text: '▶  desplegando sistema...', type: 'running', delay: 4200 },
-  { text: '✓  deploy exitoso — avanzio.com.ar', type: 'success', delay: 4800 },
+  { text: '✓  deploy exitoso — avanzio.ar', type: 'success', delay: 4800 },
   { text: '  tiempo total: 4 semanas. sin vueltas.', type: 'cyan', delay: 5200 },
   { text: '', type: 'empty', delay: 5500 },
   { text: '$ tu negocio, transformado. ✓', type: 'final', delay: 5700 },

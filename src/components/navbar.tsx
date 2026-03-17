@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import AvanzioLogo, { AvanzioIsotipo } from "@/components/avanzio-logo";
 
 const navLinks = [
   { href: "/servicios", label: "Servicios" },
@@ -62,27 +63,15 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-[68px] flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-              style={{
-                background: "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
-                boxShadow: "0 0 0 0 rgba(124,58,237,0)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 0 20px rgba(124,58,237,0.6), 0 0 40px rgba(124,58,237,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 0 0 0 rgba(124,58,237,0)";
-              }}
-            >
-              <span className="text-white font-black text-sm">A</span>
-            </div>
-            <span className="text-xl font-bold text-white transition-colors duration-200 group-hover:text-[#A78BFA]">
-              avanzio
-            </span>
+          <Link href="/" className="flex items-center gap-3 group">
+            <AvanzioIsotipo
+              size={32}
+              className="transition-all duration-300 group-hover:scale-110 group-hover:[box-shadow:0_0_20px_rgba(124,58,237,0.6),0_0_40px_rgba(124,58,237,0.2)]"
+            />
+            <AvanzioLogo
+              width={110}
+              className="fill-white transition-all duration-200 group-hover:fill-[#A78BFA]"
+            />
           </Link>
 
           {/* Desktop nav links */}
