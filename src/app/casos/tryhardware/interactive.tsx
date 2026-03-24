@@ -334,49 +334,49 @@ export function TiendaGallery() {
         Resultado visual
       </p>
 
-      {/* Layout desktop: tienda grande a la izquierda (row-span-2), mobile + google/seo a la derecha */}
-      <div className="grid grid-cols-12 gap-3">
-        {/* Tienda desktop — ocupa 2 filas en lg */}
-        <div className="col-span-12 lg:col-span-8 lg:row-span-2 h-[280px] sm:h-[360px] lg:h-auto">
+      {/* Layout desktop: tienda arriba-izquierda, mobile columna derecha completa (row-span-2), google/seo 50/50 abajo-izquierda */}
+      <div className="grid grid-cols-12 gap-3 lg:grid-rows-[370px_180px]">
+        {/* Tienda desktop — fila 1, cols 1-8 */}
+        <div className="col-span-12 lg:col-span-8 h-[280px] sm:h-[360px] lg:h-full">
           <ScrollFrame
             src={tiendaItems[0].src}
             alt={tiendaItems[0].alt}
             label="try.com.ar"
-            maxHeight={900}
+            maxHeight={360}
             onExpand={() => setLightboxIndex(0)}
           />
         </div>
 
-        {/* Mobile — derecha arriba */}
-        <div className="col-span-12 lg:col-span-4 h-[320px] sm:h-[360px] lg:h-[420px]">
+        {/* Mobile — cols 9-12, span ambas filas → altura = 370+12+180 = 562px */}
+        <div className="col-span-12 lg:col-span-4 lg:row-span-2 h-[640px] sm:h-[360px] lg:h-full">
           <ScrollFrame
             src={tiendaItems[1].src}
             alt={tiendaItems[1].alt}
             label="mobile"
-            maxHeight={390}
+            maxHeight={900}
             isMobile
             onExpand={() => setLightboxIndex(1)}
           />
         </div>
 
-        {/* Google reviews — derecha abajo izquierda */}
-        <div className="col-span-12 md:col-span-6 lg:col-span-2 h-[220px] md:h-[260px]">
+        {/* Google reviews — fila 2, 50% izquierda (cols 1-4) */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[220px] md:h-[260px] lg:h-full">
           <ScrollFrame
             src={tiendaItems[2].src}
             alt={tiendaItems[2].alt}
             label="Google · 4.9★ · 110 opiniones"
-            maxHeight={230}
+            maxHeight={160}
             onExpand={() => setLightboxIndex(2)}
           />
         </div>
 
-        {/* SEO — derecha abajo derecha */}
-        <div className="col-span-12 md:col-span-6 lg:col-span-2 h-[220px] md:h-[260px]">
+        {/* SEO — fila 2, 50% derecha (cols 5-8) */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[220px] md:h-[260px] lg:h-full">
           <ScrollFrame
             src={tiendaItems[3].src}
             alt={tiendaItems[3].alt}
             label="pc gamer en banfield — 1er resultado"
-            maxHeight={230}
+            maxHeight={160}
             onExpand={() => setLightboxIndex(3)}
           />
         </div>
