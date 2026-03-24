@@ -297,7 +297,7 @@ export default function HomePage() {
           </h2>
           <p className="text-lg text-slate-400 mb-12 max-w-lg mx-auto leading-relaxed">
             Contanos qué necesitás y en 24hs te respondemos con una propuesta concreta.
-            Sin rodeos, sin costo.
+            Sin vueltas, sin costo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import TryHardwareMockup from "./tryhardware-mockup";
 
 export const metadata: Metadata = {
   title: "Casos de Éxito",
@@ -65,29 +66,31 @@ export default function CasosPage() {
               </span>
               <h2 className="text-4xl font-black text-white">TryHardware</h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Tienda de hardware informático en Buenos Aires con WooCommerce
-                personalizado, panel de gestión interno y plugin TH Slider
-                Builder. Un sistema que usamos nosotros mismos todos los días.
+                Dos sistemas para el mismo negocio: una tienda WooCommerce
+                rediseñada mobile-first con pagos reales (MercadoPago + Payway)
+                y envíos integrados, y un panel interno que automatiza precios
+                de 13 proveedores, sincroniza stock cada 15 minutos y libera
+                más de 5 horas diarias con IA.
               </p>
               <blockquote
                 className="border-l-4 border-[#7C3AED] pl-5 rounded-r-xl p-5"
                 style={{ background: "#1A1232" }}
               >
                 <p className="text-slate-300 italic leading-relaxed mb-3">
-                  &ldquo;No solo creamos sistemas para otros, los usamos todos
-                  los días.&rdquo;
+                  &ldquo;La tienda la mejoré por los clientes. El panel lo hice
+                  por mí — y fue la mejor decisión que tomé para el negocio.&rdquo;
                 </p>
                 <cite className="text-slate-500 text-sm not-italic">
-                  — Iván, co-fundador Avanzio
+                  — Iván, dueño TryHardware
                 </cite>
               </blockquote>
               <div className="flex flex-wrap gap-2">
                 {[
                   "WooCommerce",
-                  "PHP",
-                  "JavaScript",
-                  "Node.js",
+                  "Next.js",
                   "TypeScript",
+                  "MercadoPago",
+                  "Gemini AI",
                 ].map((tag) => (
                   <span
                     key={tag}
@@ -107,89 +110,8 @@ export default function CasosPage() {
               </Link>
             </div>
 
-            {/* Browser mockup right */}
-            <div
-              className="rounded-2xl overflow-hidden shadow-2xl"
-              style={{ background: "#1A1232" }}
-            >
-              {/* Chrome bar */}
-              <div
-                className="border-b border-white/10 px-4 py-3 flex items-center gap-3"
-                style={{ background: "#080612" }}
-              >
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <span className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <div
-                  className="flex-1 rounded-md px-3 py-1 text-xs text-slate-400 text-center"
-                  style={{ background: "#1A1232" }}
-                >
-                  tryhardware.com.ar
-                </div>
-              </div>
-
-              {/* Store nav bar */}
-              <div
-                className="border-b border-white/10 px-4 py-3 flex items-center justify-between"
-                style={{ background: "#080612" }}
-              >
-                <span className="font-black text-[#F97316] text-lg leading-none">
-                  TH{" "}
-                  <span className="text-white font-normal text-sm">
-                    Hardware
-                  </span>
-                </span>
-                <div className="flex items-center gap-4 text-xs text-slate-400">
-                  <span>Tienda</span>
-                  <span>Marcas</span>
-                  <span>Ofertas</span>
-                  <div className="relative">
-                    <span className="material-symbols-outlined text-lg leading-none">
-                      shopping_cart
-                    </span>
-                    <span className="absolute -top-1 -right-1 bg-[#F97316] text-[#080612] text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                      3
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Product grid 3-col */}
-              <div className="grid grid-cols-3 gap-3 p-4">
-                {[
-                  { icon: "memory", name: "RAM DDR5 32GB", price: "$45.000" },
-                  {
-                    icon: "developer_board",
-                    name: "RTX 4070 Ti",
-                    price: "$890.000",
-                  },
-                  { icon: "storage", name: "SSD NVMe 1TB", price: "$62.000" },
-                ].map((product) => (
-                  <div
-                    key={product.name}
-                    className="rounded-xl border border-white/10 p-3"
-                    style={{ background: "#080612" }}
-                  >
-                    <div className="bg-white/5 rounded-lg h-16 flex items-center justify-center mb-2">
-                      <span className="material-symbols-outlined text-slate-400">
-                        {product.icon}
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold text-white truncate">
-                      {product.name}
-                    </p>
-                    <p className="text-sm font-bold text-green-400 mt-1">
-                      {product.price}
-                    </p>
-                    <button className="mt-2 w-full bg-[#F97316] text-[#080612] text-xs font-bold py-1 rounded">
-                      Ver
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Browser mockup right — imágenes reales con scroll */}
+            <TryHardwareMockup />
           </div>
         </div>
       </section>
