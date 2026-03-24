@@ -334,17 +334,20 @@ export function TiendaGallery() {
         Resultado visual
       </p>
 
-      {/* Desktop + Mobile */}
-      <div className="grid grid-cols-12 gap-3 mb-3">
-        <div className="col-span-12 lg:col-span-8 h-[280px] sm:h-[360px] lg:h-[420px]">
+      {/* Layout desktop: tienda grande a la izquierda (row-span-2), mobile + google/seo a la derecha */}
+      <div className="grid grid-cols-12 gap-3">
+        {/* Tienda desktop — ocupa 2 filas en lg */}
+        <div className="col-span-12 lg:col-span-8 lg:row-span-2 h-[280px] sm:h-[360px] lg:h-auto">
           <ScrollFrame
             src={tiendaItems[0].src}
             alt={tiendaItems[0].alt}
             label="try.com.ar"
-            maxHeight={390}
+            maxHeight={900}
             onExpand={() => setLightboxIndex(0)}
           />
         </div>
+
+        {/* Mobile — derecha arriba */}
         <div className="col-span-12 lg:col-span-4 h-[320px] sm:h-[360px] lg:h-[420px]">
           <ScrollFrame
             src={tiendaItems[1].src}
@@ -355,11 +358,9 @@ export function TiendaGallery() {
             onExpand={() => setLightboxIndex(1)}
           />
         </div>
-      </div>
 
-      {/* Reviews + Google */}
-      <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-12 md:col-span-5 h-[220px] md:h-[260px]">
+        {/* Google reviews — derecha abajo izquierda */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-2 h-[220px] md:h-[260px]">
           <ScrollFrame
             src={tiendaItems[2].src}
             alt={tiendaItems[2].alt}
@@ -368,7 +369,9 @@ export function TiendaGallery() {
             onExpand={() => setLightboxIndex(2)}
           />
         </div>
-        <div className="col-span-12 md:col-span-7 h-[220px] md:h-[260px]">
+
+        {/* SEO — derecha abajo derecha */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-2 h-[220px] md:h-[260px]">
           <ScrollFrame
             src={tiendaItems[3].src}
             alt={tiendaItems[3].alt}
