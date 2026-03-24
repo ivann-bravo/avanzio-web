@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { WA } from "@/lib/whatsapp";
 
 export default function ContactoContent() {
   const [submitted, setSubmitted] = useState(false);
@@ -136,7 +137,7 @@ export default function ContactoContent() {
                   ¿Preferís hablar directamente? Escribinos por WhatsApp y respondemos en minutos.
                 </p>
                 <a
-                  href="https://wa.me/5491100000000"
+                  href={WA.contacto}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-center py-3 rounded-xl font-bold transition-all text-sm"

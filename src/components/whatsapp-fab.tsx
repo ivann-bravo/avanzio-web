@@ -1,7 +1,9 @@
+import { WA } from "@/lib/whatsapp";
+
 export default function WhatsAppFAB() {
   return (
     <a
-      href="https://wa.me/5491100000000"
+      href={WA.generic}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

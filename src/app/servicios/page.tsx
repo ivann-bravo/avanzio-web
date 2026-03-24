@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { WA } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Servicios",
@@ -486,7 +487,7 @@ export default function ServiciosPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center reveal" style={{ transitionDelay: '0.2s' }}>
             <a
-              href="https://wa.me/5491100000000"
+              href={WA.servicios}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all shadow-lg"

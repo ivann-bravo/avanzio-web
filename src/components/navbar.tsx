@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { WA } from "@/lib/whatsapp";
 import { useState, useEffect } from "react";
 import AvanzioLogo, { AvanzioIsotipo } from "@/components/avanzio-logo";
 
@@ -272,7 +273,7 @@ export default function Navbar() {
           }}
         >
           <a
-            href="https://wa.me/5491100000000"
+            href={WA.generic}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 font-semibold py-3 px-4 rounded-xl transition-colors duration-200"

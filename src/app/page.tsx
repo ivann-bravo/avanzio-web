@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import { WA } from "@/lib/whatsapp";
 import { TerminalHero } from "@/components/terminal-hero";
 import { TechTicker } from "@/components/tech-ticker";
 import { TransformationSection } from "@/components/transformation-section";
@@ -301,7 +302,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/5491100000000"
+              href={WA.home}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-10 py-4 rounded-xl font-bold text-base transition-all shadow-lg cursor-pointer"
