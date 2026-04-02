@@ -5,7 +5,7 @@ import { WA } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Nosotros — Avanzio",
   description:
-    "Somos Iván y Magalí — dos desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
+    "Somos Iván, Magalí y Julián — tres desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
 };
 
 const stackItems = [
@@ -29,8 +29,8 @@ export default function NosotrosPage() {
             QUIÉNES SOMOS
           </span>
           <h1 className="hero-animate hero-animate-2 text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-            <span className="text-white block">Somos Iván y Magalí.</span>
-            <span className="text-[#8B5CF6] block">Dos desarrolladores de Buenos Aires.</span>
+            <span className="text-white block">Somos Iván, Magalí y Julián.</span>
+            <span className="text-[#8B5CF6] block">Tres desarrolladores de Buenos Aires.</span>
           </h1>
           <p className="hero-animate hero-animate-3 text-xl text-slate-400 max-w-2xl leading-relaxed">
             No somos una agencia. Cuando contratás Avanzio, trabajás directamente
@@ -148,7 +148,7 @@ export default function NosotrosPage() {
             <h2 className="text-4xl font-bold text-white mt-3">Quiénes están detrás</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Iván */}
             <div
               className="bg-[#1A1232] rounded-2xl p-8 text-center reveal"
@@ -195,6 +195,34 @@ export default function NosotrosPage() {
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["React", "Next.js", "Tailwind", "Figma"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-[#080612] border border-white/10 rounded-full px-3 py-1 text-xs text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Julián */}
+            <div
+              className="bg-[#1A1232] rounded-2xl p-8 text-center reveal"
+              style={{ border: "1px solid rgba(16,185,129,0.3)", transitionDelay: '0.3s' }}
+            >
+              <div className="w-20 h-20 rounded-full bg-emerald-500/20 border-2 border-emerald-500/40 flex items-center justify-center mx-auto mb-4">
+                <span className="text-emerald-400 font-black text-xl">JU</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-1">Julián</h3>
+              <p className="text-emerald-400 text-sm font-semibold mb-4">
+                Co-fundador · Backend &amp; Infraestructura
+              </p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Estudiante avanzado de Sistemas. Foco en arquitectura de servidores, bases de
+                datos y despliegue de aplicaciones en producción.
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["PostgreSQL", "Docker", "Linux", "Node.js"].map((tag) => (
                   <span
                     key={tag}
                     className="bg-[#080612] border border-white/10 rounded-full px-3 py-1 text-xs text-slate-300"
@@ -318,7 +346,7 @@ export default function NosotrosPage() {
         <div className="max-w-[1200px] mx-auto px-6 text-center reveal">
           <h2 className="text-4xl font-extrabold text-white mb-6">¿Trabajamos juntos?</h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-            Somos un equipo chico, y eso es una ventaja: cuando trabajás con Avanzio, trabajás
+            Somos un equipo de tres, y eso es una ventaja: cuando trabajás con Avanzio, trabajás
             directamente con nosotros.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
