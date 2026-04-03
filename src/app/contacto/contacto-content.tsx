@@ -3,12 +3,38 @@
 import { useState } from "react";
 import { WA } from "@/lib/whatsapp";
 
-export default function ContactoContent() {
-  const [submitted, setSubmitted] = useState(false);
+type Status = "idle" | "loading" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function ContactoContent() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const data = {
+      nombre: (form.elements.namedItem("nombre") as HTMLInputElement).value,
+      empresa: (form.elements.namedItem("empresa") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      servicio: (form.elements.namedItem("servicio") as HTMLSelectElement).value,
+      mensaje: (form.elements.namedItem("mensaje") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error();
+      setStatus("success");
+    } catch {
+      setErrorMsg("Hubo un error al enviar. Intentá de nuevo o escribinos por WhatsApp.");
+      setStatus("error");
+    }
   }
 
   const inputClass =
@@ -40,7 +66,7 @@ export default function ContactoContent() {
             {/* FORMULARIO (3/5) */}
             <div className="lg:col-span-3 reveal">
               <div className="bg-[#1A1232] border border-white/[0.08] rounded-2xl p-8">
-                {submitted ? (
+                {status === "success" ? (
                   <div className="text-center py-12">
                     <span className="material-symbols-outlined text-emerald-400 text-6xl block mb-4">check_circle</span>
                     <h2 className="text-2xl font-bold text-white mb-3">¡Mensaje recibido!</h2>
@@ -57,6 +83,7 @@ export default function ContactoContent() {
                         <div>
                           <label className="block text-sm font-semibold text-slate-300 mb-2">Nombre</label>
                           <input
+                            name="nombre"
                             type="text"
                             placeholder="Tu nombre"
                             required
@@ -66,6 +93,7 @@ export default function ContactoContent() {
                         <div>
                           <label className="block text-sm font-semibold text-slate-300 mb-2">Empresa / Negocio</label>
                           <input
+                            name="empresa"
                             type="text"
                             placeholder="Nombre de tu empresa"
                             className={inputClass}
@@ -75,6 +103,7 @@ export default function ContactoContent() {
                       <div>
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Email</label>
                         <input
+                          name="email"
                           type="email"
                           placeholder="tu@email.com"
                           required
@@ -84,6 +113,7 @@ export default function ContactoContent() {
                       <div>
                         <label className="block text-sm font-semibold text-slate-300 mb-2">¿Qué necesitás?</label>
                         <select
+                          name="servicio"
                           required
                           defaultValue=""
                           className={inputClass + " appearance-none"}
@@ -98,17 +128,31 @@ export default function ContactoContent() {
                       <div>
                         <label className="block text-sm font-semibold text-slate-300 mb-2">Contanos tu proyecto</label>
                         <textarea
+                          name="mensaje"
                           rows={5}
                           placeholder="Describí brevemente tu negocio y qué problema querés resolver. No hace falta que sea técnico."
                           className={inputClass + " resize-none"}
                         />
                       </div>
+                      {status === "error" && (
+                        <p className="text-sm text-red-400 text-center">{errorMsg}</p>
+                      )}
                       <button
                         type="submit"
-                        className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-[#7C3AED]/25 flex items-center justify-center gap-2"
+                        disabled={status === "loading"}
+                        className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-[#7C3AED]/25 flex items-center justify-center gap-2"
                       >
-                        <span className="material-symbols-outlined">send</span>
-                        Enviar mensaje
+                        {status === "loading" ? (
+                          <>
+                            <span className="material-symbols-outlined animate-spin text-xl">progress_activity</span>
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            <span className="material-symbols-outlined">send</span>
+                            Enviar mensaje
+                          </>
+                        )}
                       </button>
                       <p className="text-xs text-slate-500 text-center">Te respondemos en menos de 24 horas hábiles.</p>
                     </form>
