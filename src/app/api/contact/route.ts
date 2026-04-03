@@ -25,11 +25,24 @@ export async function POST(req: Request) {
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
         <!-- HEADER -->
-        <tr><td style="background:linear-gradient(135deg,#7C3AED,#4F46E5);border-radius:16px 16px 0 0;padding:32px 40px;">
-          <p style="margin:0 0 6px;color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">avanzio.ar</p>
-          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;line-height:1.3;">Nuevo contacto recibido</h1>
-          <p style="margin:8px 0 0;color:rgba(255,255,255,0.75);font-size:14px;">Alguien quiere trabajar con ustedes 🚀</p>
-        </td></tr>
+        <tr><td style="background:linear-gradient(135deg,#4f46e5,#0f172a);border-radius:16px 16px 0 0;padding:32px 40px;">
+          
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              
+              <td valign="middle" style="text-align:left;">
+                <p style="margin:0 0 6px;color:rgba(255,255,255,1);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">avanzio.ar</p>
+                <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;line-height:1.3;">Nuevo contacto recibido</h1>
+                <p style="margin:8px 0 0;color:rgba(255,255,255,1);font-size:14px;">Alguien quiere trabajar con ustedes 🚀</p>
+              </td>
+
+              <td valign="middle" align="right" style="width:60px; padding-left:15px;">
+                <img src="https://github.com/ivann-bravo/avanzio-web/blob/master/public/android-chrome-192x192.png?raw=true" alt="Avanzio" width="50" style="display:block; border:none; outline:none; text-decoration:none;">
+              </td>
+              
+            </tr>
+          </table>
+          </td></tr>
 
         <!-- DATOS PRINCIPALES -->
         <tr><td style="background:#fff;padding:32px 40px 24px;">
