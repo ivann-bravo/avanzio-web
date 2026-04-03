@@ -47,9 +47,8 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-xs">CONTACTO</h4>
             <ul className="space-y-2 text-slate-500 text-sm">
-              <li className="flex items-start gap-2">
-                <span className="material-symbols-outlined text-sm shrink-0 mt-0.5">mail</span>
-                <span className="break-all">hola@avanzio.ar</span>
+              <li>
+                <a href="mailto:hola@avanzio.ar" className="hover:text-white transition-colors break-all">hola@avanzio.ar</a>
               </li>
               <li className="flex items-center gap-2">
                 <a
