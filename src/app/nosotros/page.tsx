@@ -5,7 +5,7 @@ import { WA } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Nosotros — Avanzio",
   description:
-    "Somos Iván, Magalí y Julián — tres desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
+    "Somos tres desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
 };
 
 const stackItems = [
@@ -29,12 +29,12 @@ export default function NosotrosPage() {
             QUIÉNES SOMOS
           </span>
           <h1 className="hero-animate hero-animate-2 text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-            <span className="text-white block">Somos Iván, Magalí y Julián.</span>
+            <span className="text-white block">Somos Avanzio.</span>
             <span className="text-[#8B5CF6] block">Tres desarrolladores de Buenos Aires.</span>
           </h1>
           <p className="hero-animate hero-animate-3 text-xl text-slate-400 max-w-2xl leading-relaxed">
             No somos una agencia. Cuando contratás Avanzio, trabajás directamente
-            con nosotros — desde la primera reunión hasta el soporte post-lanzamiento.
+            con nosotros, desde la primera reunión hasta el soporte post-lanzamiento.
           </p>
         </div>
       </section>
@@ -45,7 +45,7 @@ export default function NosotrosPage() {
         style={{ backgroundColor: "#0F0A20" }}
       >
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: story text */}
             <div className="space-y-6 reveal">
               <span className="text-[#7C3AED] uppercase tracking-widest text-sm font-bold">
@@ -55,7 +55,7 @@ export default function NosotrosPage() {
                 Empezamos resolviendo nuestros propios problemas
               </h2>
               <p className="text-slate-300 leading-relaxed text-lg">
-                Antes de tener clientes, teníamos TryHardware — nuestra propia tienda de
+                Antes de tener clientes, teníamos TryHardware, nuestra propia tienda de
                 hardware en Buenos Aires. Cuando los sistemas genéricos no alcanzaban, los
                 construimos nosotros.
               </p>
@@ -106,8 +106,8 @@ export default function NosotrosPage() {
                   </p>
                   <h3 className="font-bold text-white mb-1">Santa Benedetta</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">
-                    El dueño de una fiambrería de barrio nos confió su tienda online.
-                    Lo tratamos como si fuera la nuestra.
+                    El dueño de una tienda de vinos y quesos nos confió su tienda online.
+                    Lo tratamos como si fuera nuestro.
                   </p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function NosotrosPage() {
                 Constructor de TryHardware desde cero.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["Node.js", "TypeScript", "PHP", "WordPress"].map((tag) => (
+                {["Node.js", "TypeScript", "PHP", "Java", "Python"].map((tag) => (
                   <span
                     key={tag}
                     className="bg-[#080612] border border-white/10 rounded-full px-3 py-1 text-xs text-slate-300"
@@ -191,7 +191,7 @@ export default function NosotrosPage() {
               </p>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
                 Estudiante avanzada de Sistemas. Foco en interfaces, experiencia de usuario y
-                relación con el cliente. Cara visible de Avanzio.
+                relación con el cliente.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["React", "Next.js", "Tailwind", "Figma"].map((tag) => (
@@ -290,7 +290,7 @@ export default function NosotrosPage() {
               </span>
               <h3 className="text-xl font-bold text-white mb-3">Foco en el negocio</h3>
               <p className="text-slate-400 leading-relaxed">
-                Primero entendemos cómo ganás plata, después escribimos código. La tecnología
+                Primero entendemos cómo ganás vos, después escribimos código. La tecnología
                 es el medio, no el fin.
               </p>
             </div>
