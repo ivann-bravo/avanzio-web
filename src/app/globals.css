@@ -30,6 +30,7 @@
 @layer base {
   html {
     color-scheme: light;
+    scrollbar-color: var(--color-sand) var(--color-paper);
     -webkit-text-size-adjust: 100%;
   }
 
@@ -156,7 +157,7 @@
 }
 
 .sticker-pop {
-  animation: sticker-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s both;
+  animation: sticker-pop 0.7s var(--ease-out-quint) 1.2s both;
 }
 
 /* ===== Transformación ===== */
