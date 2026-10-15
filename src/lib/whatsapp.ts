@@ -36,12 +36,3 @@ export function signalsMessage(texts: readonly string[]): string {
   const lines = texts.map((t) => `- ${t}`).join("\n");
   return `Hola Avanzio, vi el sitio y me pasa esto:\n${lines}\n¿Podemos hablar?`;
 }
-
-/** Compatibilidad con las páginas que todavía importan WA (se quita en la limpieza final). */
-export const WA = {
-  generic: waLink("generic"),
-  home: waLink("home"),
-  servicios: waLink("servicios"),
-  nosotros: waLink("nosotros"),
-  contacto: waLink("contacto"),
-} as const;

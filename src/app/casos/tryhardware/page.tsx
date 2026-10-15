@@ -198,7 +198,7 @@ function ProjectIntro({
           ))}
         </ul>
       </div>
-      <div className={`mt-12 grid gap-12 ${wideMedia ? "" : "lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16"}`}>
+      <div className={`mt-12 grid grid-cols-[minmax(0,1fr)] gap-12 ${wideMedia ? "" : "lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16"}`}>
         <div className="reveal max-w-[62ch] space-y-5 text-lg leading-relaxed text-ink-soft">
           {paragraphs.map((p) => (
             <p key={p}>{p}</p>

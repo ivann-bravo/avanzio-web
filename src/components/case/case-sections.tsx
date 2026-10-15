@@ -75,7 +75,7 @@ export function CaseProse({
 }) {
   return (
     <Section tone={tone}>
-      <div className={`grid gap-12 ${aside ? "lg:grid-cols-[1.1fr_1fr] lg:items-center" : "lg:grid-cols-[1fr_1.4fr]"}`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)] gap-12 ${aside ? "lg:grid-cols-[1.1fr_1fr] lg:items-center" : "lg:grid-cols-[1fr_1.4fr]"}`}>
         <div className={aside ? "" : "contents"}>
           <h2 className="reveal max-w-[18ch] text-title text-display-lg">{title}</h2>
           <div className={`reveal max-w-[62ch] space-y-5 text-lg leading-relaxed text-ink-soft ${aside ? "mt-8" : ""}`}>
