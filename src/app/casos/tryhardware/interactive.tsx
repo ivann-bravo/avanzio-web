@@ -1,15 +1,21 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
+import { Icon } from "@/components/ui/icon"
 
-// ─── LIGHTBOX con navegación ──────────────────────────────────────────────────
+// Lightbox con navegación
 
 interface LightboxItem {
   src: string
   alt: string
+  width: number
+  height: number
   isMobile?: boolean
 }
+
+const thinScrollbar = "[scrollbar-color:var(--color-sand)_transparent] [scrollbar-width:thin]"
 
 function Lightbox({
   items,
@@ -41,192 +47,96 @@ function Lightbox({
     }
   }, [onClose, idx, items.length])
 
-  // Sync startIndex when lightbox reopens on a different item
+  // Sincroniza el índice cuando el lightbox se reabre en otra captura
   useEffect(() => {
     setIdx(startIndex)
   }, [startIndex])
 
   if (!mounted) return null
 
+  const arrowClasses =
+    "flex w-11 shrink-0 items-center justify-center text-bone/70 transition-[color,transform] duration-150 ease-out hover:text-bone active:scale-[0.97] disabled:cursor-default disabled:text-bone/10"
+
   return createPortal(
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        background: "rgba(8,6,18,1)",
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden",
-      }}
-    >
-      {/* Top bar */}
-      <div
-        style={{
-          flexShrink: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          background: "#080612",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0 }}>
+    <div role="dialog" aria-modal="true" aria-label={item.alt} className="fixed inset-0 z-[9999] flex flex-col overflow-hidden bg-ink/95">
+      {/* Barra superior */}
+      <div className="flex shrink-0 items-center justify-between border-b border-bone/10 px-4 py-3">
+        <div className="flex min-w-0 items-center gap-3 text-[13px]">
           {items.length > 1 && (
-            <span style={{ color: "rgba(255,255,255,0.25)", fontSize: "13px", flexShrink: 0 }}>
+            <span className="shrink-0 text-bone/40">
               {idx + 1} / {items.length}
             </span>
           )}
-          <p style={{ color: "#94a3b8", fontSize: "13px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            {item.alt}
-          </p>
+          <p className="truncate text-bone-on-ink">{item.alt}</p>
         </div>
         <button
+          type="button"
           onClick={onClose}
-          style={{
-            flexShrink: 0,
-            marginLeft: "16px",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            background: "rgba(255,255,255,0.1)",
-            border: "none",
-            color: "white",
-            borderRadius: "12px",
-            padding: "8px 16px",
-            cursor: "pointer",
-            fontSize: "14px",
-            fontWeight: 500,
-          }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.18)" }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)" }}
+          className="ml-4 flex shrink-0 items-center gap-2 rounded-full bg-bone/10 px-4 py-2 text-sm font-medium text-bone transition-[background-color,transform] duration-150 ease-out hover:bg-bone/20 active:scale-[0.97]"
         >
-          <span className="material-symbols-outlined" style={{ fontSize: "18px", lineHeight: 1 }}>close</span>
+          <Icon name="close" className="size-[18px]" />
           <span className="hidden sm:inline">Cerrar</span>
+          <span className="sr-only sm:hidden">Cerrar</span>
         </button>
       </div>
 
       {/* Imagen + flechas */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "stretch",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        {/* Flecha anterior */}
+      <div className="relative flex flex-1 items-stretch overflow-hidden">
         {items.length > 1 && (
           <button
+            type="button"
             onClick={() => setIdx((i) => Math.max(0, i - 1))}
             disabled={!hasPrev}
-            style={{
-              flexShrink: 0,
-              width: "44px",
-              background: "none",
-              border: "none",
-              color: hasPrev ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.1)",
-              cursor: hasPrev ? "pointer" : "default",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "color 0.15s",
-            }}
-            onMouseEnter={(e) => { if (hasPrev) (e.currentTarget as HTMLButtonElement).style.color = "white" }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = hasPrev ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.1)" }}
+            aria-label="Captura anterior"
+            className={arrowClasses}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: "32px" }}>arrow_back_ios</span>
+            <Icon name="arrow-right" className="size-8 rotate-180" />
           </button>
         )}
 
-        {/* Área de imagen scrollable */}
+        {/* Área de imagen con scroll */}
         <div
           onClick={onClose}
-          style={{
-            flex: 1,
-            minHeight: 0,
-            overflowY: "auto",
-            overflowX: "hidden",
-            padding: "16px 0",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            scrollbarWidth: "thin",
-            scrollbarColor: "rgba(124,58,237,0.4) transparent",
-          }}
+          className={`flex min-h-0 flex-1 flex-col items-center overflow-y-auto overflow-x-hidden py-4 ${thinScrollbar}`}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
+            key={item.src}
             src={item.src}
             alt={item.alt}
+            width={item.width}
+            height={item.height}
+            sizes={item.isMobile ? "320px" : "100vw"}
             onClick={(e) => e.stopPropagation()}
-            style={{
-              display: "block",
-              height: "auto",
-              marginTop: "auto",
-              marginBottom: "auto",
-              borderRadius: "12px",
-              boxShadow: "0 25px 60px rgba(0,0,0,0.8)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              maxWidth: item.isMobile ? "320px" : "100%",
-              width: item.isMobile ? "auto" : "100%",
-            }}
+            className={`my-auto block h-auto rounded-xl border border-bone/10 ${item.isMobile ? "w-auto max-w-[320px]" : "w-full max-w-full"}`}
           />
         </div>
 
-        {/* Flecha siguiente */}
         {items.length > 1 && (
           <button
+            type="button"
             onClick={() => setIdx((i) => Math.min(items.length - 1, i + 1))}
             disabled={!hasNext}
-            style={{
-              flexShrink: 0,
-              width: "44px",
-              background: "none",
-              border: "none",
-              color: hasNext ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.1)",
-              cursor: hasNext ? "pointer" : "default",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "color 0.15s",
-            }}
-            onMouseEnter={(e) => { if (hasNext) (e.currentTarget as HTMLButtonElement).style.color = "white" }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = hasNext ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.1)" }}
+            aria-label="Captura siguiente"
+            className={arrowClasses}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: "32px" }}>arrow_forward_ios</span>
+            <Icon name="arrow-right" className="size-8" />
           </button>
         )}
       </div>
 
-      {/* Dots de navegación */}
+      {/* Puntos de navegación */}
       {items.length > 1 && (
-        <div
-          style={{
-            flexShrink: 0,
-            display: "flex",
-            justifyContent: "center",
-            gap: "8px",
-            padding: "12px 16px",
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-          }}
-        >
-          {items.map((_, i) => (
+        <div className="flex shrink-0 justify-center gap-2 border-t border-bone/10 px-4 py-3">
+          {items.map((dot, i) => (
             <button
-              key={i}
+              key={dot.src}
+              type="button"
               onClick={() => setIdx(i)}
-              style={{
-                width: i === idx ? "24px" : "8px",
-                height: "8px",
-                borderRadius: "4px",
-                border: "none",
-                background: i === idx ? "#7C3AED" : "rgba(255,255,255,0.2)",
-                cursor: "pointer",
-                transition: "all 0.25s",
-                padding: 0,
-              }}
+              aria-label={`Ver captura ${i + 1}`}
+              aria-current={i === idx}
+              className={`h-2 rounded-full p-0 transition-[width,background-color] duration-250 ease-out ${
+                i === idx ? "w-6 bg-violet" : "w-2 bg-bone/20 hover:bg-bone/40"
+              }`}
             />
           ))}
         </div>
@@ -236,93 +146,54 @@ function Lightbox({
   )
 }
 
-// ─── SCROLL FRAME (reutilizable) ──────────────────────────────────────────────
+// Marco con scroll (reutilizable)
 
 interface ScrollFrameProps {
-  src: string
-  alt: string
+  item: LightboxItem
   label: string
-  maxHeight?: number
-  isMobile?: boolean
-  bgWhite?: boolean
+  sizes: string
   onExpand: () => void
 }
 
-function ScrollFrame({
-  src,
-  alt,
-  label,
-  maxHeight = 380,
-  isMobile = false,
-  bgWhite = false,
-  onExpand,
-}: ScrollFrameProps) {
+function ScrollFrame({ item, label, sizes, onExpand }: ScrollFrameProps) {
   return (
-    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl flex flex-col h-full">
-      {/* Chrome bar */}
-      <div
-        className="flex items-center gap-2 px-3 py-2.5 border-b border-white/10 flex-shrink-0"
-        style={{ background: "#0F0A20" }}
-      >
-        {isMobile ? (
-          <span className="material-symbols-outlined text-slate-600 text-sm leading-none">signal_cellular_alt</span>
-        ) : (
-          <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-          </div>
-        )}
-        <span className="text-xs text-slate-500 flex-1 text-center">{label}</span>
+    <div className="flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-sand bg-bone">
+      {/* Barra superior */}
+      <div className="flex shrink-0 items-center gap-2 border-b border-sand px-3 py-2.5">
+        <span className="flex-1 truncate text-center text-xs text-ink-muted">{label}</span>
         <button
+          type="button"
           onClick={onExpand}
-          className="text-slate-600 hover:text-slate-300 transition-colors flex-shrink-0"
-          title="Ver completo"
+          aria-label={`Ver completo: ${label}`}
+          className="shrink-0 text-ink-muted transition-[color,transform] duration-150 ease-out hover:text-ink active:scale-[0.97]"
         >
-          <span className="material-symbols-outlined text-sm leading-none">open_in_full</span>
+          <Icon name="arrow-up-right" className="size-4" />
         </button>
       </div>
 
-      {/* Scrollable area */}
-      <div
-        className="relative overflow-y-auto cursor-pointer group"
-        style={{
-          maxHeight: `${maxHeight}px`,
-          background: bgWhite ? "#fff" : "transparent",
-          scrollbarWidth: "thin",
-          scrollbarColor: "rgba(124,58,237,0.3) transparent",
-        }}
-        onClick={onExpand}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="w-full h-auto block" />
-
-        {/* Hover hint */}
-        <div
-          className="absolute bottom-0 left-0 right-0 flex justify-center pb-2 pt-8 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-          style={{
-            background: bgWhite
-              ? "linear-gradient(transparent, rgba(230,230,230,0.9))"
-              : "linear-gradient(transparent, rgba(0,0,0,0.8))",
-          }}
-        >
-          <span className={`text-xs flex items-center gap-1 ${bgWhite ? "text-slate-500" : "text-white/60"}`}>
-            <span className="material-symbols-outlined text-xs leading-none">open_in_full</span>
-            Click para ver completo
-          </span>
+      {/* Área con scroll */}
+      <div className="group relative min-h-0 flex-1">
+        <div className={`h-full cursor-pointer overflow-y-auto ${thinScrollbar}`} onClick={onExpand}>
+          <Image src={item.src} alt={item.alt} width={item.width} height={item.height} sizes={sizes} className="block h-auto w-full" />
         </div>
+
+        {/* Pista al pasar el mouse */}
+        <span className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-xs text-bone opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <Icon name="arrow-up-right" className="size-3.5" />
+          Click para ver completo
+        </span>
       </div>
     </div>
   )
 }
 
-// ─── TIENDA GALLERY ───────────────────────────────────────────────────────────
+// Galería de la tienda
 
 const tiendaItems: LightboxItem[] = [
-  { src: "/casos/tryhardware/tienda-home-desktop.png", alt: "Tienda TryHardware — try.com.ar · Desktop" },
-  { src: "/casos/tryhardware/tienda-home-mobile.png", alt: "Tienda TryHardware — Vista Mobile", isMobile: true },
-  { src: "/casos/tryhardware/tienda-reviews.png", alt: "TryHardware — 4.9★ · 110 reseñas en Google" },
-  { src: "/casos/tryhardware/tienda-google.png", alt: "TryHardware — primer resultado para 'pc gamer en banfield'" },
+  { src: "/casos/tryhardware/tienda-home-desktop.png", alt: "Tienda TryHardware: try.com.ar en desktop", width: 1918, height: 8498 },
+  { src: "/casos/tryhardware/tienda-home-mobile.png", alt: "Tienda TryHardware: vista mobile", width: 488, height: 9527, isMobile: true },
+  { src: "/casos/tryhardware/tienda-reviews.png", alt: "TryHardware: 4.9★ · 110 reseñas en Google", width: 1892, height: 862 },
+  { src: "/casos/tryhardware/tienda-google.png", alt: "TryHardware: primer resultado para 'pc gamer en banfield'", width: 1892, height: 869 },
 ]
 
 export function TiendaGallery() {
@@ -330,85 +201,70 @@ export function TiendaGallery() {
 
   return (
     <div>
-      <p className="text-slate-500 text-xs uppercase tracking-widest font-bold mb-5">
-        Resultado visual
-      </p>
+      <h3 className="mb-6 text-title text-2xl">Resultado visual</h3>
 
-      {/* Layout desktop: tienda arriba-izquierda, mobile columna derecha completa (row-span-2), google/seo 50/50 abajo-izquierda */}
+      {/*
+        Desktop: tienda arriba a la izquierda (cols 1-8, fila 1), captura mobile en la columna derecha
+        completa (cols 9-12, lg:row-span-2 → 370 + 12 + 180 = 562px), reseñas y SEO 50/50 abajo a la izquierda.
+      */}
       <div className="grid grid-cols-12 gap-3 lg:grid-rows-[370px_180px]">
-        {/* Tienda desktop — fila 1, cols 1-8 */}
-        <div className="col-span-12 lg:col-span-8 h-[280px] sm:h-[360px] lg:h-full">
+        <div className="col-span-12 h-[500px] lg:col-span-8 lg:h-full">
           <ScrollFrame
-            src={tiendaItems[0].src}
-            alt={tiendaItems[0].alt}
+            item={tiendaItems[0]}
             label="try.com.ar"
-            maxHeight={360}
+            sizes="(min-width: 1024px) 760px, 100vw"
             onExpand={() => setLightboxIndex(0)}
           />
         </div>
 
-        {/* Mobile — cols 9-12, span ambas filas → altura = 370+12+180 = 562px */}
-        <div className="col-span-12 lg:col-span-4 lg:row-span-2 h-[640px] sm:h-[360px] lg:h-full">
-          <ScrollFrame
-            src={tiendaItems[1].src}
-            alt={tiendaItems[1].alt}
-            label="mobile"
-            maxHeight={900}
-            isMobile
-            onExpand={() => setLightboxIndex(1)}
-          />
+        <div className="col-span-12 h-[640px] lg:col-span-4 lg:row-span-2 lg:h-full">
+          <ScrollFrame item={tiendaItems[1]} label="mobile" sizes="(min-width: 1024px) 370px, 100vw" onExpand={() => setLightboxIndex(1)} />
         </div>
 
-        {/* Google reviews — fila 2, 50% izquierda (cols 1-4) */}
-        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[220px] md:h-[260px] lg:h-full">
+        {/* Capturas apaisadas: en celular toman su altura natural para no recortar ni dejar huecos */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 lg:h-full">
           <ScrollFrame
-            src={tiendaItems[2].src}
-            alt={tiendaItems[2].alt}
+            item={tiendaItems[2]}
             label="Google · 4.9★ · 110 opiniones"
-            maxHeight={160}
+            sizes="(min-width: 768px) 50vw, 100vw"
             onExpand={() => setLightboxIndex(2)}
           />
         </div>
 
-        {/* SEO — fila 2, 50% derecha (cols 5-8) */}
-        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[220px] md:h-[260px] lg:h-full">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 lg:h-full">
           <ScrollFrame
-            src={tiendaItems[3].src}
-            alt={tiendaItems[3].alt}
-            label="pc gamer en banfield — 1er resultado"
-            maxHeight={160}
+            item={tiendaItems[3]}
+            label="pc gamer en banfield: 1er resultado"
+            sizes="(min-width: 768px) 50vw, 100vw"
             onExpand={() => setLightboxIndex(3)}
           />
         </div>
       </div>
 
-      <p className="text-slate-600 text-xs mt-3 text-center">
-        Posicionamiento orgánico en búsquedas locales — sin pauta publicitaria
-      </p>
+      <p className="mt-4 text-center text-sm text-ink-muted">Posicionamiento orgánico en búsquedas locales, sin pauta publicitaria.</p>
 
       {lightboxIndex !== null && (
-        <Lightbox
-          items={tiendaItems}
-          startIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
-        />
+        <Lightbox items={tiendaItems} startIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />
       )}
     </div>
   )
 }
 
-// ─── PANEL GALLERY ────────────────────────────────────────────────────────────
+// Galería del panel
 
 const panelItems: LightboxItem[] = [
-  { src: "/casos/tryhardware/panel-dashboard.png", alt: "Dashboard — resumen general del sistema" },
-  { src: "/casos/tryhardware/panel-catalogo.png", alt: "Catálogo unificado con comparación de proveedores" },
-  { src: "/casos/tryhardware/panel-pricing.png", alt: "Motor de pricing — markup y ofertas automáticas" },
-  { src: "/casos/tryhardware/panel-combos.png", alt: "Constructor de PCs y combos compatibles" },
-  { src: "/casos/tryhardware/panel-ordenes.png", alt: "Órdenes de compra automáticas por proveedor" },
-  { src: "/casos/tryhardware/panel-descripciones.png", alt: "Descripciones generadas con Gemini 2.5 Flash" },
+  { src: "/casos/tryhardware/panel-dashboard.png", alt: "Dashboard: resumen general del sistema", width: 1911, height: 865 },
+  { src: "/casos/tryhardware/panel-catalogo.png", alt: "Catálogo unificado con comparación de proveedores", width: 1895, height: 861 },
+  { src: "/casos/tryhardware/panel-pricing.png", alt: "Motor de pricing: markup y ofertas automáticas", width: 1892, height: 862 },
+  { src: "/casos/tryhardware/panel-combos.png", alt: "Constructor de PCs y combos compatibles", width: 1889, height: 863 },
+  { src: "/casos/tryhardware/panel-ordenes.png", alt: "Órdenes de compra automáticas por proveedor", width: 1893, height: 862 },
+  { src: "/casos/tryhardware/panel-descripciones.png", alt: "Descripciones generadas con Gemini 2.5 Flash", width: 1340, height: 761 },
 ]
 
 const panelLabels = ["Dashboard", "Catálogo unificado", "Motor de pricing", "Constructor de PCs", "Órdenes de compra", "Descripciones con IA"]
+
+const navButton =
+  "flex items-center gap-1 rounded-full border border-sand px-4 py-2 text-sm text-ink-soft transition-[color,border-color,transform] duration-150 ease-out hover:border-ink hover:text-ink active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-30"
 
 export function PanelGallery() {
   const [current, setCurrent] = useState(0)
@@ -418,117 +274,105 @@ export function PanelGallery() {
 
   return (
     <div>
-      <p className="text-slate-500 text-xs uppercase tracking-widest font-bold mb-5">
-        El sistema en producción
-      </p>
+      <h3 className="mb-6 text-title text-2xl">El sistema en producción</h3>
 
-      {/* Main screenshot */}
-      <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl mb-4">
-        <div
-          className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.08]"
-          style={{ background: "#0F0A20" }}
-        >
-          <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-          </div>
-          <span className="text-xs text-slate-500 mx-auto">
-            panel.try.com.ar — {panelLabels[current]}
-          </span>
+      {/* Captura principal */}
+      <div className="mb-4 overflow-hidden rounded-[var(--radius-card)] border border-sand bg-bone">
+        <div className="flex items-center gap-2 border-b border-sand px-4 py-2.5">
+          <span className="mx-auto truncate text-xs text-ink-muted">panel.try.com.ar · {panelLabels[current]}</span>
           <button
+            type="button"
             onClick={() => setLightboxIndex(current)}
-            className="text-slate-600 hover:text-slate-300 transition-colors"
-            title="Ver completo"
+            aria-label={`Ver completo: ${panelLabels[current]}`}
+            className="shrink-0 text-ink-muted transition-[color,transform] duration-150 ease-out hover:text-ink active:scale-[0.97]"
           >
-            <span className="material-symbols-outlined text-sm leading-none">open_in_full</span>
+            <Icon name="arrow-up-right" className="size-4" />
           </button>
         </div>
-        <div
-          className="relative overflow-y-auto cursor-pointer group bg-white"
-          style={{
-            maxHeight: "440px",
-            scrollbarWidth: "thin",
-            scrollbarColor: "rgba(124,58,237,0.3) transparent",
-          }}
-          onClick={() => setLightboxIndex(current)}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={item.src} alt={item.alt} className="w-full h-auto block" />
+        <div className="group relative">
           <div
-            className="absolute bottom-0 left-0 right-0 flex justify-center pb-2 pt-8 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-            style={{ background: "linear-gradient(transparent, rgba(240,240,240,0.92))" }}
+            className={`max-h-[440px] cursor-pointer overflow-y-auto ${thinScrollbar}`}
+            onClick={() => setLightboxIndex(current)}
           >
-            <span className="text-xs text-slate-600 flex items-center gap-1">
-              <span className="material-symbols-outlined text-xs leading-none">open_in_full</span>
-              Click para ver completo · scroll para explorar
-            </span>
+            <Image
+              key={item.src}
+              src={item.src}
+              alt={item.alt}
+              width={item.width}
+              height={item.height}
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              className="block h-auto w-full"
+            />
           </div>
+          <span className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-xs text-bone opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <Icon name="arrow-up-right" className="size-3.5" />
+            Click para ver completo · scroll para explorar
+          </span>
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="flex items-center justify-between mb-4">
+      {/* Navegación */}
+      <div className="mb-4 flex items-center justify-between">
         <button
+          type="button"
           onClick={() => setCurrent((p) => Math.max(0, p - 1))}
           disabled={current === 0}
-          className="flex items-center gap-1 text-slate-400 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed transition-colors text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
+          aria-label="Captura anterior"
+          className={navButton}
         >
-          <span className="material-symbols-outlined text-sm leading-none">arrow_back</span>
+          <Icon name="arrow-right" className="size-4 rotate-180" />
           <span className="hidden sm:inline">Anterior</span>
         </button>
 
         <div className="flex items-center gap-1.5">
-          {panelItems.map((_, i) => (
+          {panelItems.map((dot, i) => (
             <button
-              key={i}
+              key={dot.src}
+              type="button"
               onClick={() => setCurrent(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === current ? "bg-[#7C3AED] w-6" : "bg-white/20 w-2 hover:bg-white/40"
+              aria-label={`Ver ${panelLabels[i]}`}
+              aria-current={i === current}
+              className={`h-2 rounded-full transition-[width,background-color] duration-300 ease-out ${
+                i === current ? "w-6 bg-violet" : "w-2 bg-sand hover:bg-ink-muted"
               }`}
             />
           ))}
         </div>
 
         <button
+          type="button"
           onClick={() => setCurrent((p) => Math.min(panelItems.length - 1, p + 1))}
           disabled={current === panelItems.length - 1}
-          className="flex items-center gap-1 text-slate-400 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed transition-colors text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
+          aria-label="Captura siguiente"
+          className={navButton}
         >
           <span className="hidden sm:inline">Siguiente</span>
-          <span className="material-symbols-outlined text-sm leading-none">arrow_forward</span>
+          <Icon name="arrow-right" className="size-4" />
         </button>
       </div>
 
-      {/* Thumbnail strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+      {/* Miniaturas */}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6">
         {panelItems.map((panelItem, i) => (
           <button
-            key={i}
+            key={panelItem.src}
+            type="button"
             onClick={() => setCurrent(i)}
-            className={`rounded-xl overflow-hidden border-2 transition-all text-left ${
-              i === current
-                ? "border-[#7C3AED]"
-                : "border-transparent hover:border-white/20"
+            aria-pressed={i === current}
+            className={`overflow-hidden rounded-xl border-2 bg-bone text-left transition-[border-color,transform] duration-150 ease-out active:scale-[0.97] ${
+              i === current ? "border-violet" : "border-transparent hover:border-sand"
             }`}
           >
-            <div className="bg-white overflow-hidden h-16 md:h-12">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={panelItem.src} alt={panelLabels[i]} className="w-full h-auto block" />
+            <div className="relative h-16 overflow-hidden md:h-12">
+              <Image src={panelItem.src} alt="" fill sizes="200px" className="object-cover object-top" />
             </div>
-            <div className="px-2 py-1.5" style={{ background: "#0F0A20" }}>
-              <p className="text-xs md:text-[10px] text-slate-500 truncate">{panelLabels[i]}</p>
-            </div>
+            <p className="truncate px-2 py-1.5 text-xs text-ink-muted md:text-[10px]">{panelLabels[i]}</p>
           </button>
         ))}
       </div>
 
       {lightboxIndex !== null && (
-        <Lightbox
-          items={panelItems}
-          startIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
-        />
+        <Lightbox items={panelItems} startIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />
       )}
     </div>
   )

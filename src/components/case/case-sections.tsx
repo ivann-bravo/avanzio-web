@@ -167,7 +167,7 @@ export function ResultsBlock({
     <section className="overflow-hidden bg-violet px-4 py-24 text-bone sm:px-6 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <h2 className="reveal max-w-[14ch] text-impact text-[clamp(2.6rem,6.5vw,5rem)]">{title}</h2>
-        <dl className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] bg-violet-tint/25 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className={`mt-14 grid gap-px overflow-hidden rounded-[var(--radius-card)] bg-violet-tint/25 sm:grid-cols-2 ${items.length % 3 === 0 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
           {items.map((item, i) => (
             <div key={item.label} className="reveal flex flex-col bg-violet-deep p-6" style={stagger(i)}>
               <dt className="order-2 mt-3 font-semibold">{item.label}</dt>
