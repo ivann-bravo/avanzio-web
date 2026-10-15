@@ -67,7 +67,7 @@ export function CaseCard({
         </h3>
         <p className={`${variant === "compact" ? "mt-2" : "mt-4"} max-w-[52ch] ${dark ? "text-bone-on-ink" : "text-ink-soft"}`}>
           {item.summary}
-          {item.highlight ? <span className="font-semibold text-ink"> {item.highlight}</span> : null}
+          {item.highlight ? <span className={`font-semibold ${dark ? "text-paper" : "text-ink"}`}> {item.highlight}</span> : null}
         </p>
         {item.detailPage && variant !== "compact" ? (
           <span className="mt-auto inline-flex items-center gap-2 pt-6 font-semibold">

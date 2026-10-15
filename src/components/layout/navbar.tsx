@@ -19,7 +19,15 @@ export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Cambio de ruta sin tocar un link del menú (botón Atrás): el menú se cierra.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
   const sentinel = useRef<HTMLDivElement>(null);
+  const header = useRef<HTMLElement>(null);
 
   // Borde inferior cuando la página dejó de estar arriba de todo (sin escuchar el scroll).
   useEffect(() => {
@@ -34,13 +42,24 @@ export function Navbar() {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // Mientras el menú tapa la página, el foco no puede ir a lo que quedó detrás.
+    const behind = Array.from(document.body.children).filter((el) => !el.contains(header.current));
+    behind.forEach((el) => el.setAttribute("inert", ""));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    // Si el celular gira a horizontal (>= md) el menú y su botón se ocultan: hay que cerrarlo.
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onResize = () => {
+      if (desktop.matches) setOpen(false);
+    };
     window.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
     return () => {
       document.body.style.overflow = previous;
+      behind.forEach((el) => el.removeAttribute("inert"));
       window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
     };
   }, [open]);
 
@@ -50,6 +69,7 @@ export function Navbar() {
     <>
       <div ref={sentinel} aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-2" />
       <header
+        ref={header}
         className={`fixed inset-x-0 top-0 z-40 border-b bg-paper transition-colors duration-200 ${
           scrolled || open ? "border-sand" : "border-transparent"
         }`}

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Icon } from "@/components/ui/icon"
 
@@ -40,12 +40,23 @@ function Lightbox({
       if (e.key === "ArrowLeft" && idx > 0) setIdx((i) => i - 1)
     }
     document.addEventListener("keydown", handler)
+    return () => document.removeEventListener("keydown", handler)
+  }, [onClose, idx, items.length])
+
+  // Al abrir: bloquea el scroll y lleva el foco a "Cerrar". Al cerrar: devuelve todo como estaba.
+  const closeButton = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null
+    const previousOverflow = document.body.style.overflow
     document.body.style.overflow = "hidden"
     return () => {
-      document.removeEventListener("keydown", handler)
-      document.body.style.overflow = ""
+      document.body.style.overflow = previousOverflow
+      opener?.focus()
     }
-  }, [onClose, idx, items.length])
+  }, [])
+  useEffect(() => {
+    if (mounted) closeButton.current?.focus()
+  }, [mounted])
 
   // Sincroniza el índice cuando el lightbox se reabre en otra captura
   useEffect(() => {
@@ -70,6 +81,7 @@ function Lightbox({
           <p className="truncate text-bone-on-ink">{item.alt}</p>
         </div>
         <button
+          ref={closeButton}
           type="button"
           onClick={onClose}
           className="ml-4 flex shrink-0 items-center gap-2 rounded-full bg-bone/10 px-4 py-2 text-sm font-medium text-bone transition-[background-color,transform] duration-150 ease-out hover:bg-bone/20 active:scale-[0.97]"
@@ -184,7 +196,7 @@ function ScrollFrame({ item, label, sizes, onExpand }: ScrollFrameProps) {
         {/* Pista al pasar el mouse */}
         <span className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-xs text-bone opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <Icon name="arrow-up-right" className="size-3.5" />
-          Click para ver completo
+          Tocá para ver completo
         </span>
       </div>
     </div>
@@ -310,7 +322,7 @@ export function PanelGallery() {
           </div>
           <span className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-xs text-bone opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             <Icon name="arrow-up-right" className="size-3.5" />
-            Click para ver completo · scroll para explorar
+            Tocá para ver completo · deslizá para explorar
           </span>
         </div>
       </div>
