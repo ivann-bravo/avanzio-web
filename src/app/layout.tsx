@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     siteName: "Avanzio",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Avanzio. Tu negocio ya no entra en un Excel." }],
   },
 };
 
