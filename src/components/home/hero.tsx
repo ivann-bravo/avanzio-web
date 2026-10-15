@@ -11,7 +11,7 @@ export function Hero() {
     <section className="overflow-hidden px-4 pt-24 sm:px-6 lg:px-8 lg:pt-28">
       <div className="mx-auto grid max-w-6xl items-end gap-12 lg:grid-cols-[1fr_1.12fr] lg:gap-6">
         <div className="pb-6 lg:pb-24">
-          <h1 className="hero-in text-impact text-display-xl" style={delay(60)}>
+          <h1 className="hero-rise text-impact text-display-xl" style={delay(60)}>
             Tu negocio <br className="hidden sm:block" />
             ya no entra en un <span className="text-accent text-violet">Excel.</span>
           </h1>

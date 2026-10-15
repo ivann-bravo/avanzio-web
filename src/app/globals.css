@@ -131,6 +131,17 @@
   animation-delay: var(--d, 0ms);
 }
 
+/* Para el elemento principal de la pantalla (LCP): entra moviéndose pero siempre visible. */
+@keyframes hero-rise {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
+
+.hero-rise {
+  animation: hero-rise 0.9s var(--ease-out-quint) both;
+  animation-delay: var(--d, 0ms);
+}
+
 /* La planilla de antes cae y se apaga */
 @keyframes sheet-settle {
   from { opacity: 0; transform: translate(18%, 14%) rotate(0deg) scale(1.04); filter: grayscale(0); }
@@ -143,7 +154,7 @@
 
 /* El panel de después sube */
 @keyframes panel-rise {
-  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  from { transform: translateY(28px) scale(0.97); }
   to { opacity: 1; transform: none; }
 }
 
@@ -212,6 +223,7 @@
   }
 
   .hero-in,
+  .hero-rise,
   .sheet-settle,
   .panel-rise,
   .sticker-pop,

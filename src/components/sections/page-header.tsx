@@ -5,7 +5,7 @@ export function PageHeader({ title, intro, children }: { title: ReactNode; intro
   return (
     <section className="px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pt-40">
       <div className="mx-auto max-w-6xl">
-        <h1 className="hero-in max-w-[16ch] text-impact text-display-xl" style={{ "--d": "60ms" } as CSSProperties}>
+        <h1 className="hero-rise max-w-[16ch] text-impact text-display-xl" style={{ "--d": "60ms" } as CSSProperties}>
           {title}
         </h1>
         {intro ? (

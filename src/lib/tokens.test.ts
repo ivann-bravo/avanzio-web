@@ -47,6 +47,14 @@ describe("tokens", () => {
     expect(css).not.toMatch(/font-family: var\(--font-(serif|sans|mono)\)/);
   });
 
+  it("el elemento principal (LCP) nunca arranca invisible", () => {
+    for (const name of ["hero-rise", "panel-rise"]) {
+      const block = css.match(new RegExp(`@keyframes ${name} \\{[^}]*\\}`))?.[0] ?? "";
+      expect(block, name).not.toBe("");
+      expect(block, name).not.toMatch(/opacity/);
+    }
+  });
+
   it("los reveal quedan visibles sin JS y con movimiento reducido", () => {
     expect(css).toMatch(/@media \(scripting: none\)\s*\{\s*\.reveal\s*\{\s*opacity: 1;/);
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);

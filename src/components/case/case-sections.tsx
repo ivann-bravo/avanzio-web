@@ -24,7 +24,7 @@ export function CaseHero({ kind, name, intro, url, image }: { kind: string; name
             <p className="hero-in font-semibold text-violet" style={delay(40)}>
               {kind}
             </p>
-            <h1 className="hero-in mt-3 text-impact text-display-xl" style={delay(80)}>
+            <h1 className="hero-rise mt-3 text-impact text-display-xl" style={delay(80)}>
               {name}
             </h1>
             <p className="hero-in mt-6 max-w-[44ch] text-[1.2rem] leading-relaxed text-ink-soft" style={delay(160)}>
@@ -42,7 +42,7 @@ export function CaseHero({ kind, name, intro, url, image }: { kind: string; name
             </div>
           </div>
           {image ? (
-            <div className="hero-in relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-sand bg-ink" style={delay(200)}>
+            <div className="hero-rise relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-sand bg-ink" style={delay(200)}>
               <Image
                 src={image.src}
                 alt={image.alt}
