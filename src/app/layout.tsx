@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import WhatsAppFAB from "@/components/whatsapp-fab";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 import { RevealInit } from "@/components/reveal-init";
 
 const bricolage = Bricolage_Grotesque({
@@ -64,7 +64,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <WhatsAppFAB />
+        <WhatsAppFab />
         <RevealInit />
       </body>
     </html>
