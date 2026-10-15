@@ -28,7 +28,7 @@ const SIZES = {
 
 export function ButtonLink({ href, variant = "primary", size = "md", icon, className = "", children }: ButtonLinkProps) {
   const classes = [
-    "inline-flex items-center justify-center rounded-full font-semibold whitespace-nowrap",
+    "inline-flex items-center justify-center rounded-full text-center font-semibold sm:whitespace-nowrap",
     "transition-[background-color,color,transform] duration-200 ease-out active:scale-[0.97]",
     SIZES[size],
     VARIANTS[variant],

@@ -85,7 +85,7 @@
 }
 
 @utility text-display-xl {
-  font-size: clamp(3.4rem, 8.6vw, 7rem);
+  font-size: clamp(2.75rem, 1.2rem + 7vw, 7rem);
 }
 
 @utility text-display-lg {
