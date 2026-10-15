@@ -59,4 +59,8 @@ describe("tokens", () => {
     expect(css).toMatch(/@media \(scripting: none\)\s*\{\s*\.reveal\s*\{\s*opacity: 1;/);
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);
   });
+
+  it("al imprimir se ve todo, aunque no se haya scrolleado", () => {
+    expect(css).toMatch(/@media print\s*\{\s*\.reveal\s*\{\s*opacity: 1;/);
+  });
 });

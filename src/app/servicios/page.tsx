@@ -44,7 +44,7 @@ export default function ServiciosPage() {
       {services.map((service, i) => (
         <Section key={service.id} id={service.id} tone={i % 2 === 0 ? "bone" : "paper"} aria-labelledby={`${service.id}-title`}>
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-            <div className="reveal">
+            <div className={i === 0 ? "hero-rise" : "reveal"}>
               <h2 id={`${service.id}-title`} className="text-title text-display-lg">
                 {service.title}
               </h2>
@@ -61,7 +61,7 @@ export default function ServiciosPage() {
                 Escribinos por WhatsApp
               </ButtonLink>
             </div>
-            <div className="reveal grid gap-4">
+            <div className={`${i === 0 ? "hero-rise" : "reveal"} grid gap-4`}>
               <ServiceMedia service={service} />
               <dl className="grid gap-px overflow-hidden rounded-[var(--radius-card)] bg-sand sm:grid-cols-2">
                 <div className="bg-before-card p-6">

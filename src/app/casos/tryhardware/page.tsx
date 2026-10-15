@@ -234,7 +234,7 @@ export default function TryHardwarePage() {
         name="TryHardware"
         intro="Dos sistemas construidos para el mismo negocio en momentos distintos. Primero resolvimos la tienda. Después automatizamos todo lo que pasaba por detrás."
         url="https://try.com.ar"
-        image={{ src: "/casos/tryhardware/tienda-home-desktop.png", alt: "Tienda online de TryHardware" }}
+        image={{ src: "/casos/tryhardware/tienda-home-hero.jpg", alt: "Tienda online de TryHardware" }}
       />
 
       <Section tone="bone" aria-label="Los dos proyectos">

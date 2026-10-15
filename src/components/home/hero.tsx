@@ -38,7 +38,6 @@ export function Hero() {
                   alt=""
                   fill
                   loading="eager"
-                  fetchPriority="high"
                   sizes="(min-width: 1024px) 340px, 60vw"
                   className="object-cover object-left-top"
                 />
@@ -56,7 +55,6 @@ export function Hero() {
                   alt=""
                   fill
                   loading="eager"
-                  fetchPriority="high"
                   sizes="(min-width: 1024px) 860px, 140vw"
                   className="object-cover object-left-top"
                 />

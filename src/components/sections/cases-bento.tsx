@@ -10,11 +10,12 @@ const LAYOUT: Record<CaseStudy["slug"], { variant: CaseCardVariant; className: s
   motora: { variant: "compact", className: "md:col-span-3" },
 };
 
-export function CasesBento() {
+/** `firstScreen`: el bento abre la página, así que el primer caso no espera al JS para verse. */
+export function CasesBento({ firstScreen = false }: { firstScreen?: boolean }) {
   return (
     <div className="grid gap-4 md:grid-cols-6">
       {cases.map((item, i) => (
-        <CaseCard key={item.slug} item={item} index={i % 3} {...LAYOUT[item.slug]} />
+        <CaseCard key={item.slug} item={item} index={i % 3} rise={firstScreen && i === 0} {...LAYOUT[item.slug]} />
       ))}
     </div>
   );

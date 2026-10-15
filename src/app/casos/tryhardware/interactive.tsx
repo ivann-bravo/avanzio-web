@@ -126,7 +126,7 @@ function Lightbox({
 
       {/* Puntos de navegación */}
       {items.length > 1 && (
-        <div className="flex shrink-0 justify-center gap-2 border-t border-bone/10 px-4 py-3">
+        <div className="flex shrink-0 justify-center border-t border-bone/10 px-4 py-2">
           {items.map((dot, i) => (
             <button
               key={dot.src}
@@ -134,10 +134,14 @@ function Lightbox({
               onClick={() => setIdx(i)}
               aria-label={`Ver captura ${i + 1}`}
               aria-current={i === idx}
-              className={`h-2 rounded-full p-0 transition-[width,background-color] duration-250 ease-out ${
-                i === idx ? "w-6 bg-violet" : "w-2 bg-bone/20 hover:bg-bone/40"
-              }`}
-            />
+              className="group grid h-6 min-w-6 place-items-center"
+            >
+              <span
+                className={`h-2 rounded-full transition-[width,background-color] duration-250 ease-out ${
+                  i === idx ? "w-6 bg-violet" : "w-2 bg-bone/20 group-hover:bg-bone/40"
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}
@@ -324,7 +328,7 @@ export function PanelGallery() {
           <span className="hidden sm:inline">Anterior</span>
         </button>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center">
           {panelItems.map((dot, i) => (
             <button
               key={dot.src}
@@ -332,10 +336,14 @@ export function PanelGallery() {
               onClick={() => setCurrent(i)}
               aria-label={`Ver ${panelLabels[i]}`}
               aria-current={i === current}
-              className={`h-2 rounded-full transition-[width,background-color] duration-300 ease-out ${
-                i === current ? "w-6 bg-violet" : "w-2 bg-sand hover:bg-ink-muted"
-              }`}
-            />
+              className="group grid h-6 min-w-6 place-items-center"
+            >
+              <span
+                className={`h-2 rounded-full transition-[width,background-color] duration-300 ease-out ${
+                  i === current ? "w-6 bg-violet" : "w-2 bg-sand group-hover:bg-ink-muted"
+                }`}
+              />
+            </button>
           ))}
         </div>
 

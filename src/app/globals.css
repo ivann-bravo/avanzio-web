@@ -119,6 +119,13 @@
   }
 }
 
+@media print {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ===== Entrada del hero ===== */
 
 @keyframes hero-in {

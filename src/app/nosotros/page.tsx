@@ -43,10 +43,10 @@ export default function NosotrosPage() {
 
       <Section tone="paper" aria-labelledby="historia-title" flushTop>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <h2 id="historia-title" className="reveal text-title text-display-md">
+          <h2 id="historia-title" className="hero-rise text-title text-display-md">
             Por qué existe <span className="text-accent text-violet">Avanzio.</span>
           </h2>
-          <div className="reveal max-w-[62ch] space-y-5 text-lg leading-relaxed text-ink-soft">
+          <div className="hero-rise max-w-[62ch] space-y-5 text-lg leading-relaxed text-ink-soft">
             <p>
               Avanzio nació viendo de cerca cómo trabaja una PyME: precios en planillas, pedidos en chats y horas que se van en
               tareas que un sistema puede hacer solo.

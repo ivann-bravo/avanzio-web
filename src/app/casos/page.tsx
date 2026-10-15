@@ -21,8 +21,11 @@ export default function CasosPage() {
         }
         intro="Cada uno empezó con un problema concreto. Así se ve hoy."
       />
-      <Section tone="bone" aria-label="Listado de casos">
-        <CasesBento />
+      <Section tone="bone" aria-labelledby="listado-title">
+        <h2 id="listado-title" className="sr-only">
+          Casos
+        </h2>
+        <CasesBento firstScreen />
       </Section>
       <FinalCta context="casos" />
     </>

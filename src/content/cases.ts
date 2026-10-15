@@ -30,7 +30,7 @@ export const cases: readonly CaseStudy[] = [
     highlight: "Hoy el panel los calcula solo y sincroniza la tienda cada 15 minutos.",
     status: "live",
     detailPage: true,
-    image: { src: "/casos/tryhardware/tienda-home-desktop.png", alt: "Tienda online de TryHardware", device: "desktop" },
+    image: { src: "/casos/tryhardware/tienda-home-hero.jpg", alt: "Tienda online de TryHardware", device: "desktop" },
     testimonial: null,
   },
   {

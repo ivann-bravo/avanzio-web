@@ -20,7 +20,7 @@ export const afterItems: readonly AfterItem[] = [
   { src: "/casos/tryhardware/panel-dashboard.png", width: 320 },
   { src: "/casos/santa-benedetta/panel.png", width: 300 },
   { src: "/casos/tryhardware/panel-pricing.png", width: 300 },
-  { src: "/casos/tryhardware/tienda-home-desktop.png", width: 300 },
+  { src: "/casos/tryhardware/tienda-home-hero.jpg", width: 300 },
   { src: "/casos/santa-benedetta/tienda-desktop.jpg", width: 300 },
 ];
 

@@ -11,6 +11,7 @@ export function RevealInit() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
           }
         })
       },
@@ -22,16 +23,8 @@ export function RevealInit() {
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     }, 60)
 
-    // Safety fallback: reveal everything after 2.5s in case observer misses
-    const safetyTimer = setTimeout(() => {
-      document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
-        el.classList.add('visible')
-      })
-    }, 2500)
-
     return () => {
       clearTimeout(setupTimer)
-      clearTimeout(safetyTimer)
       observer.disconnect()
     }
   }, [pathname])
