@@ -6,9 +6,9 @@ interface AvanzioLogoProps {
 
 /**
  * SVG logo completo de Avanzio.
- * Fills white por defecto — cambiá className para override.
+ * Toma el color del texto (fill-current); cambiá className para otro color.
  */
-export default function AvanzioLogo({ className = "fill-white", width = 120 }: AvanzioLogoProps) {
+export default function AvanzioLogo({ className = "fill-current", width = 120 }: AvanzioLogoProps) {
   const height = Math.round(width / (845.61 / 137.78));
   return (
     <svg
@@ -61,5 +61,14 @@ export function AvanzioIsotipo({ size = 32, className = "" }: { size?: number; c
         />
       </svg>
     </div>
+  );
+}
+
+/** La "o" con flecha del wordmark, para usar como marca suelta. */
+export function AvanzioMark({ size = 32, className = "fill-current" }: { size?: number; className?: string }) {
+  return (
+    <svg viewBox="707.58 0 138.03 137.78" width={size} height={size} aria-hidden="true" className={className}>
+      <path d="M776.59,0C735.48,0,707.58,27.65,707.58,69.01s27.9,68.76,69.01,68.76,69.01-27.66,69.01-68.76S817.7,0,776.59,0ZM747.85,100.54c2.49-3.07,11.22-14.58,11.03-31.65-.19-17.27-9.4-28.68-11.95-31.65,21.94,10.75,43.88,21.5,65.81,32.25-21.63,10.35-43.26,20.7-64.89,31.05Z" />
+    </svg>
   );
 }
