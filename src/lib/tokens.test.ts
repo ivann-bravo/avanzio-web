@@ -42,6 +42,11 @@ describe("tokens", () => {
     expect(contrastRatio(palette[fg], palette[bg])).toBeGreaterThanOrEqual(min);
   });
 
+  it("las utilidades usan las variables de next/font (las de @theme inline no existen en runtime)", () => {
+    expect(css).toMatch(/@utility text-accent \{[^}]*font-family: var\(--font-instrument\)/);
+    expect(css).not.toMatch(/font-family: var\(--font-(serif|sans|mono)\)/);
+  });
+
   it("los reveal quedan visibles sin JS y con movimiento reducido", () => {
     expect(css).toMatch(/@media \(scripting: none\)\s*\{\s*\.reveal\s*\{\s*opacity: 1;/);
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);
