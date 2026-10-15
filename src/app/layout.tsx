@@ -1,26 +1,35 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import WhatsAppFAB from "@/components/whatsapp-fab";
 import { RevealInit } from "@/components/reveal-init";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-display",
+  axes: ["wdth", "opsz"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-mono",
+  weight: "400",
+  style: "italic",
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://avanzio.com.ar"),
   title: {
     template: "%s | Avanzio",
     default: "Avanzio — Software a Medida para PyMEs",
@@ -42,14 +51,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark">
+    <html lang="es">
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} font-display min-h-screen flex flex-col`}>
+      <body className={`${bricolage.variable} ${instrument.variable} ${jetbrains.variable} font-sans min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-grow">
           {children}
