@@ -33,37 +33,6 @@ export default function AvanzioLogo({ className = "fill-current", width = 120 }:
   );
 }
 
-/**
- * Isotipo: solo la "A" de Avanzio como SVG inline,
- * enmarcada en un cuadrado para usar como ícono.
- */
-export function AvanzioIsotipo({ size = 32, className = "" }: { size?: number; className?: string }) {
-  return (
-    <div
-      className={`flex items-center justify-center rounded-xl transition-all duration-300 ${className}`}
-      style={{
-        width: size,
-        height: size,
-        background: "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
-      }}
-    >
-      {/* Path de la "A" del SVG original, centrado dentro de un viewBox propio */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 121 138"
-        width={size * 0.55}
-        height={size * 0.55}
-        aria-hidden="true"
-      >
-        <path
-          fill="white"
-          d="M120.34,132.79h-37.37l-2.49-6.98c-7.22,6.98-17.94,11.96-34.63,11.96-27.16,0-45.84-13.45-45.84-39.86,0-55.31,80.47-31.39,80.47-53.32,0-4.73-4.24-8.22-13.95-8.22s-14.45,3.49-14.45,7.72H9.97C9.97,8.72,40.61,0,65.77,0s54.56,8.72,54.56,43.85c0,54.06-80.97,29.4-80.97,54.06,0,6.23,5.23,9.72,13.7,9.72,13.7,0,29.65-22.92,46.34-22.92,14.2,0,20.93,6.73,20.93,20.68v27.41Z"
-        />
-      </svg>
-    </div>
-  );
-}
-
 /** La "o" con flecha del wordmark, para usar como marca suelta. */
 export function AvanzioMark({ size = 32, className = "fill-current" }: { size?: number; className?: string }) {
   return (
