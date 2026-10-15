@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://avanzio.com.ar"),
   title: {
     template: "%s | Avanzio",
-    default: "Avanzio — Software a Medida para PyMEs",
+    default: "Avanzio · Software a medida para PyMEs",
   },
   description:
     "Desarrollamos sistemas a medida, tiendas online y paneles de gestión para PyMEs argentinas. Tu socio tecnológico, no un proveedor más.",
@@ -53,12 +53,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className={`${bricolage.variable} ${instrument.variable} ${jetbrains.variable} font-sans min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-grow">
