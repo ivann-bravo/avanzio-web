@@ -12,7 +12,8 @@ export type CaseStudy = {
   highlight?: string;
   status: CaseStatus;
   detailPage: boolean;
-  image: { src: string; alt: string; device: "desktop" | "mobile" } | null;
+  /** `anchor: "left"` para capturas de paneles: el recorte conserva el menú lateral. */
+  image: { src: string; alt: string; device: "desktop" | "mobile"; anchor?: "left" } | null;
   testimonial: Testimonial | null;
 };
 
@@ -50,7 +51,7 @@ export const cases: readonly CaseStudy[] = [
     summary: "Taller de impresión 3D: del cuaderno de pedidos a una tienda que cobra sola.",
     status: "launching",
     detailPage: false,
-    image: { src: "/casos/g3d/checkout-mobile.png", alt: "Checkout de la tienda de G3D en el celular", device: "mobile" },
+    image: { src: "/casos/g3d/tienda-desktop.jpg", alt: "Tienda online de G3D", device: "desktop" },
     testimonial: null,
   },
   {
@@ -71,7 +72,7 @@ export const cases: readonly CaseStudy[] = [
     summary: "El sistema de gestión para concesionarias. Troncone Motors ya lo usa con su stock real.",
     status: "building",
     detailPage: false,
-    image: { src: "/casos/motora/landing.jpg", alt: "Página de presentación de Motora", device: "desktop" },
+    image: { src: "/casos/motora/panel-stock.png", alt: "Panel de stock de vehículos de Motora", device: "desktop", anchor: "left" },
     testimonial: null,
   },
 ];

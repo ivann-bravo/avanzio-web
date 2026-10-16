@@ -27,7 +27,13 @@ export const services: readonly Service[] = [
       "Pedidos y clientes en un solo lugar",
       "Accesos por rol para tu equipo",
     ],
-    images: [{ src: "/casos/tryhardware/panel-pricing.png", alt: "Panel de precios de TryHardware", device: "desktop" }],
+    images: [
+      {
+        src: "/casos/tryhardware/panel-alertas-precio.png",
+        alt: "Panel de TryHardware con las alertas de cambios de precio de cada producto",
+        device: "desktop",
+      },
+    ],
     wa: "gestion",
   },
   {
@@ -61,7 +67,11 @@ export const services: readonly Service[] = [
       "Reportes que llegan solos",
     ],
     images: [
-      { src: "/casos/g3d/checkout-mobile.png", alt: "Checkout de G3D que guarda el WhatsApp del cliente para avisarle del pedido", device: "mobile" },
+      {
+        src: "/casos/motora/bandeja-mensajes.png",
+        alt: "Bandeja de Motora que junta los mensajes de WhatsApp, Instagram y Facebook en un solo lugar",
+        device: "desktop",
+      },
     ],
     wa: "automatizacion",
   },

@@ -37,7 +37,7 @@ export function ServiceMedia({ service }: { service: Service }) {
         alt={desktop.alt}
         fill
         sizes="(min-width: 768px) 54vw, 100vw"
-        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
       />
     </figure>
   );

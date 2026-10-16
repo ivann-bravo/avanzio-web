@@ -19,7 +19,7 @@ function BeforeCard({ item }: { item: BeforeItem }) {
         alt=""
         fill
         sizes={`${item.width}px`}
-        className={`object-cover ${item.position === "right-top" ? "object-right-top" : "object-top"}`}
+        className={`object-cover ${{ top: "object-top", "right-top": "object-right-top", center: "object-center" }[item.position]}`}
       />
     </div>
   );
@@ -56,7 +56,7 @@ export function Transformation() {
           <div className="marquee-x gap-5 pr-5">
             {after.map((item, i) => (
               <div key={i} className="relative h-[190px] shrink-0 overflow-hidden rounded-xl bg-bone" style={{ width: item.width }}>
-                <Image src={item.src} alt="" fill sizes={`${item.width}px`} className="object-cover object-top" />
+                <Image src={item.src} alt="" fill sizes={`${item.width}px`} className="object-cover object-left-top" />
               </div>
             ))}
           </div>

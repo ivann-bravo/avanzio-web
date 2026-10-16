@@ -51,7 +51,7 @@ export function Hero() {
             <div className="panel-rise relative aspect-[4/3] overflow-hidden rounded-t-2xl border border-violet-deep/30 bg-bone shadow-[0_-12px_40px_-18px_rgba(42,21,128,0.75)]">
               <div className="absolute inset-y-0 left-0 w-[150%]">
                 <Image
-                  src="/casos/tryhardware/panel-dashboard.png"
+                  src="/casos/tryhardware/panel-resumen.png"
                   alt=""
                   fill
                   loading="eager"

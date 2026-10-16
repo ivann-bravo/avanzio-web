@@ -25,7 +25,7 @@ function CaseImage({ item, variant }: { item: CaseStudy; variant: CaseCardVarian
         alt={item.image.alt}
         fill
         sizes={variant === "feature" ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
-        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        className={`object-cover ${item.image.anchor === "left" ? "object-left-top" : "object-top"} transition-transform duration-700 ease-out group-hover:scale-[1.02]`}
       />
     </div>
   );
