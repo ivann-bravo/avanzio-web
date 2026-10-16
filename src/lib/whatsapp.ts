@@ -24,6 +24,11 @@ const MESSAGES: Record<WaContext, string> = {
     "Hola Avanzio, quiero automatizar tareas de mi negocio (cobros, avisos, facturación). ¿Cuándo podemos hablar?",
 };
 
+/** El mensaje que queda escrito en WhatsApp al tocar un botón de ese contexto. */
+export function waMessage(context: WaContext = "generic"): string {
+  return MESSAGES[context];
+}
+
 export function waLinkWithText(text: string): string {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }

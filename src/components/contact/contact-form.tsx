@@ -118,7 +118,7 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="rounded-[var(--radius-card)] border border-sand bg-bone p-8">
+      <div role="status" className="h-full rounded-[var(--radius-card)] border border-sand bg-bone p-8">
         <p ref={sentTitle} tabIndex={-1} className="text-title text-2xl outline-none">
           Listo, nos llegó.
         </p>
@@ -143,7 +143,7 @@ export function ContactForm() {
         const target = e.target as EventTarget;
         if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) clearError(target.name);
       }}
-      className="space-y-5 rounded-[var(--radius-card)] border border-sand bg-bone p-6 sm:p-8"
+      className="h-full space-y-5 rounded-[var(--radius-card)] border border-sand bg-bone p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
