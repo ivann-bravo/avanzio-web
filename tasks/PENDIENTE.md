@@ -171,3 +171,13 @@ Lo técnico ya está implementado. Solo falta rellenar con datos reales.
 - [ ] favicon actualizado con logo de Avanzio
 - [ ] Lighthouse > 90 en todas las páginas
 - [ ] Prueba en mobile (iOS Safari + Android Chrome)
+
+## Antispam del formulario (Cloudflare Turnstile)
+El formulario de contacto ya soporta Turnstile. Para activarlo en producción:
+1. Crear un widget gratis en https://dash.cloudflare.com → Turnstile, para el dominio del sitio (modo "Managed").
+2. En Vercel → Settings → Environment Variables cargar:
+   - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (clave pública del widget)
+   - `TURNSTILE_SECRET_KEY` (clave secreta)
+3. Volver a desplegar (la clave pública se incluye al compilar).
+Cargar siempre las dos: con la secreta y sin la pública, todos los envíos se rechazan.
+Sin claves, el formulario igual filtra bots con el campo trampa y el tiempo mínimo de llenado.

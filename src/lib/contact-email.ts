@@ -1,4 +1,4 @@
-import { escapeHtml, type ContactPayload } from "@/lib/contact";
+import { escapeHtml, waLinkForPhone, type ContactPayload } from "@/lib/contact";
 import { palette } from "@/lib/tokens";
 
 /** Asunto en una sola línea: sin saltos que permitan inyectar cabeceras. */
@@ -18,6 +18,10 @@ export function contactEmailHtml(p: ContactPayload): string {
   const nombre = escapeHtml(p.nombre);
   const email = escapeHtml(p.email);
   const mailto = `mailto:${encodeURIComponent(p.email)}`;
+  const wa = p.whatsapp ? waLinkForPhone(p.whatsapp) : "";
+  const link = (href: string, text: string) =>
+    `<a href="${href}" style="color:${palette.violet};font-weight:600;text-decoration:none;">${text}</a>`;
+  const replyHref = p.email ? mailto : wa;
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -32,13 +36,14 @@ export function contactEmailHtml(p: ContactPayload): string {
         <tr><td style="background:${palette.bone};padding:28px 32px;border:1px solid ${palette.sand};border-top:none;">
           ${field("Nombre", nombre)}
           ${p.empresa ? field("Negocio", escapeHtml(p.empresa)) : ""}
-          ${field("Email", `<a href="${mailto}" style="color:${palette.violet};font-weight:600;text-decoration:none;">${email}</a>`)}
+          ${p.email ? field("Email", link(mailto, email)) : ""}
+          ${p.whatsapp ? field("WhatsApp", link(wa, escapeHtml(p.whatsapp))) : ""}
           ${field("Le interesa", escapeHtml(p.servicio))}
           ${p.mensaje ? field("Mensaje", `<span style="white-space:pre-wrap;">${escapeHtml(p.mensaje)}</span>`) : ""}
-          <a href="${mailto}" style="display:inline-block;background:${palette.ink};color:${palette.bone};font-size:15px;font-weight:700;text-decoration:none;padding:14px 28px;border-radius:999px;">Responder a ${nombre}</a>
+          <a href="${replyHref}" style="display:inline-block;background:${palette.ink};color:${palette.bone};font-size:15px;font-weight:700;text-decoration:none;padding:14px 28px;border-radius:999px;">Responder a ${nombre}</a>
         </td></tr>
         <tr><td style="padding:16px 32px;">
-          <p style="margin:0;font-size:12px;color:${palette["ink-muted"]};text-align:center;">Enviado desde el formulario de contacto. Respondé este mail para hablar con ${nombre}.</p>
+          <p style="margin:0;font-size:12px;color:${palette["ink-muted"]};text-align:center;">Enviado desde el formulario de contacto. ${p.email ? `Respondé este mail para hablar con ${nombre}.` : `${nombre} prefiere que le escriban por WhatsApp.`}</p>
         </td></tr>
       </table>
     </td></tr>

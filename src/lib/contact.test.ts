@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   CONTACT_LIMITS,
+  MIN_FILL_MS,
   escapeHtml,
   parseContactBody,
   payloadFromFormData,
@@ -12,9 +13,13 @@ const valid: ContactPayload = {
   nombre: "Ana",
   empresa: "",
   email: "ana@negocio.com",
+  whatsapp: "",
   servicio: "Tienda online",
   mensaje: "",
 };
+
+/** Lo que manda el formulario: los datos más cuánto tardó la persona en completarlo. */
+const body = (extra: Record<string, unknown> = {}) => ({ ...valid, t: MIN_FILL_MS + 1000, ...extra });
 
 describe("contacto", () => {
   it("recorta espacios y completa campos faltantes con vacío", () => {
@@ -22,6 +27,19 @@ describe("contacto", () => {
     fd.set("nombre", "  Ana  ");
     fd.set("email", " ana@negocio.com ");
     expect(payloadFromFormData(fd)).toEqual({ ...valid, servicio: "" });
+  });
+
+  it("alcanza con un WhatsApp válido si no deja email", () => {
+    expect(validateContact({ ...valid, email: "", whatsapp: "+54 9 11 7063-0456" })).toEqual({});
+  });
+
+  it("pide al menos un email o un WhatsApp", () => {
+    expect(validateContact({ ...valid, email: "", whatsapp: "" }).email).toMatch(/email o un WhatsApp/);
+  });
+
+  it("rechaza un WhatsApp con letras o demasiado corto", () => {
+    expect(validateContact({ ...valid, whatsapp: "llamame" }).whatsapp).toBeDefined();
+    expect(validateContact({ ...valid, whatsapp: "1234" }).whatsapp).toBeDefined();
   });
 
   it("un payload completo no tiene errores", () => {
@@ -51,22 +69,27 @@ describe("contacto", () => {
 
 describe("parseContactBody (servidor)", () => {
   it("acepta un cuerpo válido y recorta espacios", () => {
-    expect(parseContactBody({ ...valid, nombre: "  Ana " })).toEqual({ kind: "ok", payload: valid });
+    expect(parseContactBody(body({ nombre: "  Ana " }))).toEqual({ kind: "ok", payload: valid });
   });
 
   it("devuelve inválido si el cuerpo no es un objeto o los campos no son texto", () => {
     expect(parseContactBody(null).kind).toBe("invalid");
     expect(parseContactBody("hola").kind).toBe("invalid");
-    expect(parseContactBody({ ...valid, nombre: 42 }).kind).toBe("invalid");
+    expect(parseContactBody(body({ nombre: 42 })).kind).toBe("invalid");
   });
 
   it("devuelve inválido con email mal formado", () => {
-    const result = parseContactBody({ ...valid, email: 'x"@y.com onmouseover=alert(1)' });
+    const result = parseContactBody(body({ email: 'x"@y.com onmouseover=alert(1)' }));
     expect(result.kind).toBe("invalid");
   });
 
   it("marca como spam si el campo trampa viene completo", () => {
-    expect(parseContactBody({ ...valid, sitio: "https://spam.example" }).kind).toBe("spam");
+    expect(parseContactBody(body({ sitio: "https://spam.example" })).kind).toBe("spam");
+  });
+
+  it("marca como spam si se completó más rápido de lo que puede una persona, o sin medir el tiempo", () => {
+    expect(parseContactBody(body({ t: 800 })).kind).toBe("spam");
+    expect(parseContactBody({ ...valid }).kind).toBe("spam");
   });
 });
 

@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { parseContactBody } from "@/lib/contact";
 import { contactEmailHtml, contactSubject } from "@/lib/contact-email";
+import { TURNSTILE_FIELD, verifyTurnstile } from "@/lib/turnstile";
 
 export async function POST(req: Request) {
   let body: unknown;
@@ -18,6 +19,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Datos inválidos.", fields: parsed.errors }, { status: 400 });
   }
 
+  // Con la clave de Cloudflare Turnstile configurada, solo pasan los envíos que Cloudflare valida como humanos.
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    const token = (body as Record<string, unknown>)[TURNSTILE_FIELD];
+    const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    if (typeof token !== "string" || !token || !(await verifyTurnstile(token, turnstileSecret, ip))) {
+      return NextResponse.json({ error: "No pudimos verificar el envío. Probá de nuevo." }, { status: 400 });
+    }
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "El envío de mails no está configurado." }, { status: 503 });
@@ -27,7 +38,7 @@ export async function POST(req: Request) {
   const { error } = await new Resend(apiKey).emails.send({
     from: "Avanzio Web <noreply@avanzio.ar>",
     to: "hola@avanzio.ar",
-    replyTo: payload.email,
+    ...(payload.email ? { replyTo: payload.email } : {}),
     subject: contactSubject(payload),
     html: contactEmailHtml(payload),
   });
