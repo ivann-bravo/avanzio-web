@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import AvanzioLogo from "@/components/avanzio-logo";
 import { FinalCta } from "@/components/sections/final-cta";
 import { PageHeader } from "@/components/sections/page-header";
 import { Section } from "@/components/ui/section";
@@ -11,15 +12,12 @@ export const metadata: Metadata = {
     "Somos tres desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
 };
 
-const stack = [
-  { name: "TypeScript", role: "Lenguaje principal" },
-  { name: "Next.js", role: "Frontend y servidor" },
-  { name: "Node.js", role: "Backend y APIs" },
-  { name: "WordPress", role: "CMS y e-commerce" },
-  { name: "PostgreSQL", role: "Base de datos" },
-  { name: "Tailwind CSS", role: "Estilos" },
-  { name: "Vercel", role: "Deploy y hosting" },
-  { name: "MercadoPago", role: "Pagos en Argentina" },
+/** Compromisos concretos: salen de las condiciones comerciales y del flujo de trabajo definidos por el equipo. */
+const commitments = [
+  { title: "Precio y alcance por escrito", text: "Antes de arrancar sabés qué vamos a hacer, cuánto sale y para cuándo está." },
+  { title: "Avances cada semana", text: "Te mostramos el sistema funcionando en una demo semanal, no recién al final." },
+  { title: "Todo a tu nombre", text: "El sistema, los datos y las cuentas quedan a nombre de tu negocio." },
+  { title: "Te enseñamos a usarlo", text: "Lo dejamos andando, lo aprendés con nosotros y seguimos disponibles después." },
 ] as const;
 
 const values = [
@@ -44,7 +42,8 @@ export default function NosotrosPage() {
       <Section tone="paper" aria-labelledby="historia-title" flushTop>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <h2 id="historia-title" className="hero-rise text-title text-display-md">
-            Por qué existe <span className="text-accent text-violet">Avanzio.</span>
+            Por qué existe{" "}
+            <AvanzioLogo className="inline-block h-[0.74em] w-auto fill-current align-baseline text-violet" />
           </h2>
           <div className="hero-rise max-w-[62ch] space-y-5 text-lg leading-relaxed text-ink-soft">
             <p>
@@ -91,15 +90,15 @@ export default function NosotrosPage() {
         </ul>
       </Section>
 
-      <Section tone="ink" aria-labelledby="stack-title">
-        <h2 id="stack-title" className="reveal text-title text-display-lg">
-          Con qué <span className="text-accent text-violet-tint">construimos.</span>
+      <Section tone="ink" aria-labelledby="compromisos-title">
+        <h2 id="compromisos-title" className="reveal max-w-[16ch] text-title text-display-lg">
+          Trabajar con nosotros, <span className="text-accent text-violet-tint">en concreto.</span>
         </h2>
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-card)] bg-bone-on-ink/20 min-[360px]:grid-cols-2 md:grid-cols-4">
-          {stack.map((s) => (
-            <li key={s.name} className="bg-ink p-5">
-              <p className="font-bold text-paper">{s.name}</p>
-              <p className="mt-1 text-sm text-bone-on-ink">{s.role}</p>
+        <ul className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+          {commitments.map((c, i) => (
+            <li key={c.title} className="reveal border-t border-bone-on-ink/40 pt-6" style={stagger(i)}>
+              <h3 className="text-title text-2xl text-paper">{c.title}</h3>
+              <p className="mt-3 leading-relaxed text-bone-on-ink">{c.text}</p>
             </li>
           ))}
         </ul>
