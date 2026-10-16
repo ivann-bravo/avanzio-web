@@ -35,7 +35,7 @@ export default function ServiciosPage() {
               href={`#${s.id}`}
               className="rounded-full border border-sand bg-bone px-4 py-2 text-sm font-medium transition-colors duration-200 hover:border-ink"
             >
-              {s.title}
+              {s.shortName}
             </a>
           ))}
         </nav>
@@ -57,7 +57,8 @@ export default function ServiciosPage() {
                   </li>
                 ))}
               </ul>
-              <ButtonLink href={waLink(service.wa)} icon="whatsapp" className="mt-10">
+              <p className="mt-10 max-w-[40ch] text-lg font-semibold">{service.prompt}</p>
+              <ButtonLink href={waLink(service.wa)} icon="whatsapp" className="mt-4">
                 Escribinos por WhatsApp
               </ButtonLink>
             </div>

@@ -35,4 +35,14 @@ describe("primera pantalla sin depender de JS", () => {
     const html = renderToStaticMarkup(<CasosPage />);
     expect(html).toMatch(/<section aria-labelledby="listado-title"[^>]*>[\s\S]*<h2 id="listado-title" class="sr-only">/);
   });
+
+  it("Servicios: los botones de arriba usan etiquetas cortas y cada servicio tiene su frase antes del botón", () => {
+    const html = renderToStaticMarkup(<ServiciosPage />);
+    for (const label of ["Gestión", "Tienda online", "Automatización"]) {
+      expect(html).toMatch(new RegExp(`<a href="#[a-z]+"[^>]*>${label}</a>`));
+    }
+    expect(html).toContain("¿Tu stock vive en una planilla?");
+    expect(html).toContain("¿Hoy vendés por mensaje?");
+    expect(html).toContain("¿Qué tarea repetís todos los días?");
+  });
 });
