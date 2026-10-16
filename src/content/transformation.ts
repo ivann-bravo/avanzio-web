@@ -25,8 +25,8 @@ export const afterItems: readonly AfterItem[] = [
 ];
 
 export const pairs: readonly Pair[] = [
-  { before: "Vendías por mensaje privado de Instagram", after: "Tenés tu tienda online propia" },
-  { before: "Precios en un Excel", after: "Se actualizan solos con el dólar" },
-  { before: "Stock a ojo", after: "Te avisa qué reponer" },
-  { before: "Pedidos por WhatsApp", after: "Entran todos al mismo sistema" },
+  { before: "Pedidos por mensaje, anotados donde se pueda", after: "Todos los pedidos en un mismo lugar" },
+  { before: "Precios desparramados en planillas", after: "Cambiás un precio y se actualiza en todos lados" },
+  { before: "Stock a ojo", after: "Sabés qué tenés y qué reponer" },
+  { before: "Vendés solo cuando contestás", after: "Te compran aunque estés durmiendo" },
 ];

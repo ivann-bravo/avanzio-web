@@ -56,8 +56,9 @@ describe("contenido", () => {
     }
   });
 
-  it("el Home muestra 4 preguntas y Servicios todas", () => {
-    expect(faqFor("home")).toHaveLength(4);
+  it("el Home muestra 7 preguntas (incluye pago, costo mensual y propiedad) y Servicios todas", () => {
+    expect(faqFor("home")).toHaveLength(7);
+    expect(faqFor("home").map((f) => f.id)).toEqual(expect.arrayContaining(["pago", "costo-mensual", "propiedad"]));
     expect(faqFor("servicios").length).toBeGreaterThan(faqFor("home").length);
   });
 

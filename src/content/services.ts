@@ -16,13 +16,14 @@ export type Service = {
 export const services: readonly Service[] = [
   {
     id: "gestion",
-    title: "Stock, precios y pedidos en un solo lugar",
-    outcome: "Un panel hecho para cómo trabaja tu negocio. Te avisa qué reponer y recalcula precios cuando cambia el dólar.",
-    before: "Stock a ojo y precios en un Excel que nadie actualiza.",
-    after: "Un panel que te avisa qué reponer y actualiza los precios solo.",
+    title: "Tu negocio ordenado en un solo sistema",
+    outcome:
+      "Stock, precios, pedidos y clientes en un panel hecho a la medida de cómo trabajás. Sabés qué pasa sin tener que preguntar.",
+    before: "Stock a ojo y precios desparramados en planillas que nadie actualiza.",
+    after: "Un panel que te avisa qué reponer y mantiene los precios al día en todos lados.",
     includes: [
-      "Control de stock con alertas",
-      "Precios que se actualizan solos (dólar, proveedores, márgenes)",
+      "Stock con alertas de reposición",
+      "Precios que cambiás una vez y se actualizan en todos lados",
       "Pedidos y clientes en un solo lugar",
       "Accesos por rol para tu equipo",
     ],
@@ -38,7 +39,7 @@ export const services: readonly Service[] = [
     includes: [
       "Diseño propio, pensado primero para el celular",
       "MercadoPago y tarjetas",
-      "Envíos con Correo Argentino o Andreani, o retiro en el local",
+      "Envíos a domicilio o retiro en el local",
       "Conectada a tu stock real",
     ],
     images: [

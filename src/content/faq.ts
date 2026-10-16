@@ -17,7 +17,7 @@ const faq: readonly FaqItem[] = [
     id: "plazo",
     question: "¿Cuánto tarda?",
     answer:
-      "Un primer sistema funcionando suele estar en semanas, no meses. Santa Benedetta tuvo su primera versión en un mes.",
+      "Un primer sistema funcionando suele estar en semanas, no meses. Arrancamos con lo que más te resuelve y sumamos de a poco.",
     scopes: ["home", "servicios"],
   },
   {
@@ -25,6 +25,27 @@ const faq: readonly FaqItem[] = [
     question: "Ya tengo algo armado, ¿sirve?",
     answer:
       "Sí. Muchas veces conviene mejorar lo que ya funciona. Lo revisamos juntos y te decimos honestamente qué conviene.",
+    scopes: ["home", "servicios"],
+  },
+  {
+    id: "pago",
+    question: "¿Cómo se paga?",
+    answer:
+      "En general, la mitad al arrancar y la otra mitad al terminar, con todo lo que vamos a hacer definido por escrito. Según el proyecto, también se puede pagar por etapas. Los cambios chicos en el camino no tienen costo extra; si aparece algo grande, actualizamos el presupuesto antes de hacerlo.",
+    scopes: ["home", "servicios"],
+  },
+  {
+    id: "costo-mensual",
+    question: "¿Hay un costo mensual después?",
+    answer:
+      "Sí: todo sistema necesita hosting y algunos servicios para funcionar. Arranca lo más económico posible y crece solo si crece tu negocio. Podés gestionarlo vos (te enseñamos) o dejárnoslo a nosotros con un abono mensual.",
+    scopes: ["home", "servicios"],
+  },
+  {
+    id: "propiedad",
+    question: "¿El sistema queda a mi nombre?",
+    answer:
+      "Sí. El sistema, los datos y las cuentas (dominio, hosting, mails) quedan a nombre de tu negocio, y si algún día querés seguir sin nosotros, podés. El código lo mantenemos nosotros. Si usás un producto propio de Avanzio pensado para muchos negocios, como Motora, lo usás con licencia.",
     scopes: ["home", "servicios"],
   },
   {
@@ -45,6 +66,12 @@ const faq: readonly FaqItem[] = [
     question: "¿Funciona en el celular?",
     answer:
       "Sí. Todo lo que hacemos está pensado primero para el celular, porque ahí trabajás vos y ahí te compran tus clientes.",
+    scopes: ["servicios"],
+  },
+  {
+    id: "cambios",
+    question: "¿Y si después quiero cambiar algo?",
+    answer: "Se cambia. Arrancamos con lo justo y el sistema crece con tu negocio, a medida que aparecen cosas nuevas para resolver.",
     scopes: ["servicios"],
   },
   {
