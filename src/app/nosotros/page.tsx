@@ -37,6 +37,7 @@ export default function NosotrosPage() {
             Tres desarrolladores, <span className="text-accent text-violet">una sola idea.</span>
           </>
         }
+        intro="Que cada PyME tenga un sistema hecho a su medida, y alguien que conteste cuando lo necesita."
       />
 
       <Section tone="paper" aria-labelledby="historia-title" flushTop>
@@ -70,7 +71,12 @@ export default function NosotrosPage() {
                 {m.initials}
               </span>
               <h3 className="mt-6 text-title text-2xl">{m.name}</h3>
-              <p className="mt-1 text-ink-soft">{m.role}</p>
+              <p className="mt-1 font-semibold text-violet">{m.role}</p>
+              <p className="mt-3 leading-relaxed text-ink-soft">{m.focus}</p>
+              <p className="mt-5 border-t border-sand pt-4 text-ink-soft">
+                <span className="font-semibold text-ink">Lo que más disfruta: </span>
+                {m.likes}
+              </p>
             </li>
           ))}
         </ul>
