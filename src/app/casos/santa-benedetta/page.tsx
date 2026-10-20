@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
-import { CaseHero, CaseProse, FeatureGrid, PainGrid, PhoneShot, ResultsBlock, StackList } from "@/components/case/case-sections";
+import {
+  CaseHero,
+  CaseProse,
+  CaseShowcase,
+  FeatureGrid,
+  NextCase,
+  PainGrid,
+  PhoneShot,
+  ResultsBlock,
+} from "@/components/case/case-sections";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = {
@@ -8,23 +17,10 @@ export const metadata: Metadata = {
     "Cómo transformamos el caos de pedidos por WhatsApp e Instagram en una tienda online con gestión de stock, combos armables y control de finanzas en tiempo real.",
 };
 
-const stack = [
-  { name: "Next.js 15" },
-  { name: "TypeScript" },
-  { name: "Tailwind CSS" },
-  { name: "Prisma ORM" },
-  { name: "PostgreSQL" },
-  { name: "NextAuth v5" },
-  { name: "Cloudinary" },
-  { name: "MercadoPago" },
-  { name: "Zustand" },
-  { name: "Resend" },
-] as const;
-
 const painPoints = [
   {
     label: "Pedidos dispersos",
-    desc: "Llegaban por Instagram DM, WhatsApp y hasta en persona. Sin un lugar centralizado, nada se coordinaba.",
+    desc: "Llegaban por mensaje de Instagram, por WhatsApp y hasta en persona. Sin un lugar donde juntarlos, nada se coordinaba.",
   },
   {
     label: "Stock a ciegas",
@@ -32,7 +28,7 @@ const painPoints = [
   },
   {
     label: "Precios desactualizados",
-    desc: "Subían una historia con precio X. Si el precio subía al día siguiente, no podían cobrar más al cliente que ya había visto la historia.",
+    desc: "Publicaban un precio en una historia y, si al día siguiente subía, no podían cobrarle más a quien ya lo había visto.",
   },
   {
     label: "Solo vendían a conocidos",
@@ -43,7 +39,7 @@ const painPoints = [
 const features = [
   {
     title: "Tienda online propia",
-    desc: "Catálogo completo con precios actualizados en tiempo real. Cuando el precio cambia en el panel, cambia en la tienda automáticamente.",
+    desc: "Catálogo completo con precios siempre al día: cuando cambian un precio en el panel, cambia solo en la tienda.",
   },
   {
     title: "Combos personalizables",
@@ -51,11 +47,11 @@ const features = [
   },
   {
     title: "Gestión de stock integrada",
-    desc: "Cada venta descuenta stock automáticamente. El sistema avisa cuando un producto está agotado y bloquea la venta antes de comprometerse.",
+    desc: "Cada venta descuenta el stock sola. Si un producto se agota, el sistema avisa y no deja venderlo.",
   },
   {
-    title: "Dashboard financiero",
-    desc: "Pedidos del mes, ganancias, ticket promedio, productos más vendidos, gastos vs ingresos. Todo en una pantalla, sin planillas.",
+    title: "Números del negocio",
+    desc: "Pedidos del mes, ganancias, ticket promedio, lo más vendido y gastos contra ingresos. Todo en una pantalla, sin planillas.",
   },
   {
     title: "Gestión de clientes",
@@ -63,14 +59,14 @@ const features = [
   },
   {
     title: "MercadoPago integrado",
-    desc: "Cobros online con todos los métodos del ecosistema argentino: tarjeta, cuotas, transferencia bancaria.",
+    desc: "Cobros online con tarjeta, cuotas o transferencia.",
   },
 ] as const;
 
 const results = [
-  { label: "MVP lanzado en", value: "1 mes", sub: "desde el primer commit" },
+  { label: "Primera versión en", value: "1 mes", sub: "desde que arrancamos" },
   { label: "Errores de stock", value: "0", sub: "el sistema bloquea doble venta" },
-  { label: "Herramientas reemplazadas", value: "4+", sub: "Excel, DMs, notas, llamadas" },
+  { label: "Herramientas reemplazadas", value: "4+", sub: "Excel, mensajes, notas y llamadas" },
   { label: "Dolor principal", value: "Resuelto", sub: "todo centralizado en un sistema" },
 ] as const;
 
@@ -80,7 +76,7 @@ export default function SantaBenedettaPage() {
       <CaseHero
         kind="Tienda online y sistema de gestión"
         name="Santa Benedetta"
-        intro="Vinos, quesos y sabores artesanales de primera calidad, con el caos de Instagram DMs y Excel. Lo transformamos en una tienda profesional con gestión de stock, combos armables y control de finanzas."
+        intro="Vinos, quesos y sabores artesanales de primera calidad, vendidos entre mensajes de Instagram y planillas. Lo pasamos a una tienda propia con stock, combos para armar y los números del negocio a la vista."
         url="https://santabenedetta.com"
         image={{ src: "/casos/santa-benedetta/tienda-desktop.jpg", alt: "Tienda online de Santa Benedetta" }}
       />
@@ -117,8 +113,17 @@ export default function SantaBenedettaPage() {
         items={features}
       />
 
+      <CaseShowcase
+        title={
+          <>
+            Los pedidos, <span className="text-accent text-violet">en un solo lugar.</span>
+          </>
+        }
+        image={{ src: "/casos/santa-benedetta/panel-pedidos.png", alt: "Panel de pedidos de Santa Benedetta con estado, pago y total de cada pedido", width: 1891, height: 792 }}
+        caption="El panel de pedidos, con datos de prueba."
+      />
+
       <CaseProse
-        tone="bone"
         title={
           <>
             Combos que el cliente arma <span className="text-accent text-violet">a su gusto.</span>
@@ -126,11 +131,11 @@ export default function SantaBenedettaPage() {
         }
         paragraphs={[
           "Santa Benedetta no vende productos genéricos: vende experiencias. Por eso el sistema permite dos tipos de combos: los que Fernando y Marilina arman con su selección, y los que el cliente personaliza eligiendo qué productos llevar.",
-          "Esto no estaba disponible en ninguna plataforma estándar. Era imposible de implementar por Instagram o por WhatsApp. Necesitaban algo hecho a medida, y eso es exactamente lo que construimos.",
+          "Ninguna plataforma de tiendas lo traía resuelto, y por Instagram o WhatsApp era imposible. Necesitaban algo hecho a medida, y eso es lo que construimos.",
         ]}
         bullets={[
           "El cliente elige la cantidad de cada producto dentro del combo",
-          "El stock se valida en tiempo real al armar la caja",
+          "El stock se controla en el momento de armar la caja",
           "Fernando y Marilina configuran qué productos van disponibles",
           "El precio se calcula automáticamente según la selección",
         ]}
@@ -146,14 +151,18 @@ export default function SantaBenedettaPage() {
         items={results}
         note={
           <>
-            <strong className="font-semibold text-bone">Proyecto en etapa de mejoras.</strong> El MVP se lanzó en un mes y está en uso
-            activo. A medida que Fernando y Marilina incorporen su catálogo real y empiecen a operar, vamos a sumar métricas concretas de
+            <strong className="font-semibold text-bone">Proyecto en etapa de mejoras.</strong> La primera versión salió en un mes y está
+            en uso. A medida que Fernando y Marilina incorporen su catálogo real y empiecen a operar, vamos a sumar métricas concretas de
             ventas y crecimiento.
           </>
         }
       />
 
-      <StackList items={stack} />
+      <NextCase
+        href="/casos/troncone-motors"
+        name="Troncone Motors"
+        summary="Una concesionaria familiar que pasó de no tener web a mostrar su catálogo y su financiamiento."
+      />
       <FinalCta context="casos" />
     </>
   );

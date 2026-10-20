@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaseHero, CaseProse, FeatureGrid, PainGrid, ResultsBlock, StackList } from "@/components/case/case-sections";
+import { CaseHero, CaseProse, CaseShowcase, FeatureGrid, NextCase, PainGrid, ResultsBlock } from "@/components/case/case-sections";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = {
@@ -7,15 +7,6 @@ export const metadata: Metadata = {
   description:
     "Cómo construimos la web de Troncone Motors, concesionaria familiar en Burzaco, con catálogo de vehículos online, financiamiento y gestión integral.",
 };
-
-const stack = [
-  { name: "Next.js" },
-  { name: "TypeScript" },
-  { name: "Tailwind CSS" },
-  { name: "React" },
-  { name: "Google Maps API" },
-  { name: "Vercel" },
-] as const;
 
 const painPoints = [
   {
@@ -39,7 +30,7 @@ const painPoints = [
 const features = [
   {
     title: "Catálogo de vehículos",
-    desc: "Listado de unidades disponibles con fotos, especificaciones, año, kilómetros y precio. Actualizable sin necesidad de programadores.",
+    desc: "Las unidades disponibles con fotos, año, kilómetros y precio. Lo actualizan ellos, sin depender de nadie.",
   },
   {
     title: "Financiamiento BNA+",
@@ -55,11 +46,11 @@ const features = [
   },
   {
     title: "Mapa y ubicación",
-    desc: "Google Maps integrado. El cliente sabe exactamente dónde están antes de llamar o ir hasta el local en Burzaco.",
+    desc: "Con el mapa en la web, el cliente sabe dónde están antes de llamar o de ir hasta el local en Burzaco.",
   },
   {
     title: "Blog integrado",
-    desc: "Sección de novedades para publicar contenido, promociones y novedades del mercado automotor.",
+    desc: "Una sección para publicar promociones y novedades del mercado automotor.",
   },
 ] as const;
 
@@ -89,8 +80,7 @@ export default function TronconeMotorsPage() {
         }
         paragraphs={[
           "Troncone Motors es una concesionaria familiar ubicada en Burzaco, Buenos Aires. Venden autos nuevos y usados, ofrecen financiamiento a través de BNA+, gestoría propia, seguros y una cartera de servicios completa para el comprador.",
-          "Con años en el rubro y una operación sólida, el negocio funcionaba. Pero todo el potencial de crecimiento quedaba limitado porque no había manera de que un cliente los encontrara online, viera las unidades disponibles o entendiera qué servicios ofrecían antes de llamar.",
-          "Necesitaban una presencia digital que estuviera a la altura de su trayectoria y que convirtiera a los visitantes en consultas reales.",
+          "Con años en el rubro, el negocio funcionaba. Lo que faltaba era que un cliente pudiera encontrarlos en internet, ver los autos y entender todo lo que ofrecen antes de llamar.",
         ]}
       />
 
@@ -113,6 +103,16 @@ export default function TronconeMotorsPage() {
         items={features}
       />
 
+      <CaseShowcase
+        title={
+          <>
+            Y su stock, <span className="text-accent text-violet">en Motora.</span>
+          </>
+        }
+        image={{ src: "/casos/motora/panel-stock.png", alt: "Panel de stock de vehículos de Motora con marca, modelo, año y estado", width: 1917, height: 793 }}
+        caption="Troncone Motors maneja su stock real en Motora, el sistema para concesionarias que estamos desarrollando."
+      />
+
       <ResultsBlock
         title={
           <>
@@ -129,7 +129,11 @@ export default function TronconeMotorsPage() {
         }
       />
 
-      <StackList items={stack} />
+      <NextCase
+        href="/casos/tryhardware"
+        name="TryHardware"
+        summary="Una tienda online y un panel que calcula los precios de 13 proveedores solo."
+      />
       <FinalCta context="casos" />
     </>
   );

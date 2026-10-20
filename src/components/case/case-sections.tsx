@@ -186,17 +186,48 @@ export function ResultsBlock({
   );
 }
 
-export function StackList({ items }: { items: readonly { name: string }[] }) {
+/** Una captura grande del sistema, con su título. En celular se recorta desde arriba a la izquierda para que se lea. */
+export function CaseShowcase({
+  title,
+  image,
+  caption,
+  tone = "bone",
+}: {
+  title: ReactNode;
+  image: CaseImage & { width: number; height: number };
+  caption?: string;
+  tone?: "paper" | "bone";
+}) {
   return (
-    <Section tone="ink" aria-label="Stack utilizado">
-      <h2 className="reveal text-title text-display-md">Con qué lo construimos</h2>
-      <ul className="reveal mt-8 flex flex-wrap gap-2">
-        {items.map((s) => (
-          <li key={s.name} className="rounded-full border border-bone-on-ink/30 px-4 py-2 font-mono text-sm text-paper">
-            {s.name}
-          </li>
-        ))}
-      </ul>
+    <Section tone={tone}>
+      <h2 className="reveal max-w-[18ch] text-title text-display-lg">{title}</h2>
+      <figure className="reveal mt-12">
+        <div
+          className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)] border border-sand bg-paper sm:aspect-[var(--shot-ratio)]"
+          style={{ "--shot-ratio": `${image.width} / ${image.height}` } as CSSProperties}
+        >
+          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover object-left-top" />
+        </div>
+        {caption ? <figcaption className="mt-3 text-sm text-ink-muted">{caption}</figcaption> : null}
+      </figure>
+    </Section>
+  );
+}
+
+/** Link al caso siguiente, para recorrer los tres sin volver al listado. */
+export function NextCase({ href, name, summary }: { href: string; name: string; summary: string }) {
+  return (
+    <Section tone="bone" aria-label="Siguiente caso">
+      <Link
+        href={href}
+        className="reveal group flex flex-col gap-4 rounded-[var(--radius-card)] border border-sand bg-paper p-8 transition-[border-color,transform] duration-200 ease-out hover:border-ink active:scale-[0.97] sm:flex-row sm:items-center sm:justify-between"
+      >
+        <span>
+          <span className="block text-title text-display-md">Siguiente caso: {name}</span>
+          <span className="mt-3 block text-lg text-ink-soft">{summary}</span>
+        </span>
+        <Icon name="arrow-right" className="size-8 shrink-0 text-violet transition-transform duration-200 ease-out group-hover:translate-x-1" />
+      </Link>
     </Section>
   );
 }

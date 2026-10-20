@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { CaseHero, FeatureGrid, ResultsBlock } from "@/components/case/case-sections";
+import { CaseHero, FeatureGrid, NextCase, ResultsBlock } from "@/components/case/case-sections";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Icon } from "@/components/ui/icon";
 import { Section } from "@/components/ui/section";
@@ -272,20 +271,11 @@ export default function TryHardwarePage() {
         </figure>
       </Section>
 
-      <Section tone="bone" aria-label="Siguiente caso">
-        <Link
-          href="/casos/santa-benedetta"
-          className="reveal group flex flex-col gap-4 rounded-[var(--radius-card)] border border-sand bg-paper p-8 transition-[border-color,transform] duration-200 ease-out hover:border-ink active:scale-[0.97] sm:flex-row sm:items-center sm:justify-between"
-        >
-          <span>
-            <span className="block text-title text-display-md">Siguiente caso: Santa Benedetta</span>
-            <span className="mt-3 block text-lg text-ink-soft">
-              De pedidos por Instagram a una tienda propia con combos, stock y pagos online.
-            </span>
-          </span>
-          <Icon name="arrow-right" className="size-8 shrink-0 text-violet transition-transform duration-200 ease-out group-hover:translate-x-1" />
-        </Link>
-      </Section>
+      <NextCase
+        href="/casos/santa-benedetta"
+        name="Santa Benedetta"
+        summary="De pedidos por Instagram a una tienda propia con combos, stock y pagos online."
+      />
 
       <FinalCta context="casos" />
     </>
