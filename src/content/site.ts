@@ -16,5 +16,7 @@ export const site: Site = {
   social: [
     { label: "Instagram", url: "https://www.instagram.com/avanzio.ar/", icon: "instagram" },
     { label: "LinkedIn", url: "https://www.linkedin.com/company/avanzioar/", icon: "linkedin" },
+    { label: "Facebook", url: "https://www.facebook.com/avanzio.ar/", icon: "facebook" },
+    { label: "TikTok", url: "https://www.tiktok.com/@avanzio.ar", icon: "tiktok" },
   ],
 };

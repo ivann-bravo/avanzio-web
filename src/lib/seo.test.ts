@@ -51,10 +51,12 @@ describe("SEO", () => {
     expect(JSON.stringify(org.areaServed)).toContain("Argentina");
   });
 
-  it("la organización enlaza los perfiles de Instagram y LinkedIn", () => {
+  it("la organización enlaza los perfiles de Instagram, LinkedIn, Facebook y TikTok", () => {
     expect(organizationSchema().sameAs).toEqual([
       "https://www.instagram.com/avanzio.ar/",
       "https://www.linkedin.com/company/avanzioar/",
+      "https://www.facebook.com/avanzio.ar/",
+      "https://www.tiktok.com/@avanzio.ar",
     ]);
   });
 
