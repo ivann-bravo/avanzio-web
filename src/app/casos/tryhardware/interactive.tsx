@@ -224,7 +224,7 @@ export function TiendaGallery() {
         completa (cols 9-12, lg:row-span-2 → 370 + 12 + 180 = 562px), reseñas y SEO 50/50 abajo a la izquierda.
       */}
       <div className="grid grid-cols-12 gap-3 lg:grid-rows-[370px_180px]">
-        <div className="col-span-12 h-[500px] lg:col-span-8 lg:h-full">
+        <div className="col-span-12 h-[360px] sm:h-[500px] lg:col-span-8 lg:h-full">
           <ScrollFrame
             item={tiendaItems[0]}
             label="try.com.ar"
@@ -233,7 +233,7 @@ export function TiendaGallery() {
           />
         </div>
 
-        <div className="col-span-12 h-[640px] lg:col-span-4 lg:row-span-2 lg:h-full">
+        <div className="col-span-12 h-[480px] sm:h-[640px] lg:col-span-4 lg:row-span-2 lg:h-full">
           <ScrollFrame item={tiendaItems[1]} label="mobile" sizes="(min-width: 1024px) 370px, 100vw" onExpand={() => setLightboxIndex(1)} />
         </div>
 
@@ -269,15 +269,15 @@ export function TiendaGallery() {
 // Galería del panel
 
 const panelItems: LightboxItem[] = [
-  { src: "/casos/tryhardware/panel-dashboard.png", alt: "Dashboard: resumen general del sistema", width: 1911, height: 865 },
-  { src: "/casos/tryhardware/panel-catalogo.png", alt: "Catálogo unificado con comparación de proveedores", width: 1895, height: 861 },
-  { src: "/casos/tryhardware/panel-pricing.png", alt: "Motor de pricing: markup y ofertas automáticas", width: 1892, height: 862 },
+  { src: "/casos/tryhardware/panel-resumen.png", alt: "Resumen del negocio: facturación, margen, catálogo y dólar del día", width: 1899, height: 953 },
+  { src: "/casos/tryhardware/panel-productos.png", alt: "Productos con el precio y el stock de cada proveedor", width: 1899, height: 954 },
+  { src: "/casos/tryhardware/panel-alertas-precio.png", alt: "Alertas de cambios de precio de los proveedores", width: 1674, height: 939 },
   { src: "/casos/tryhardware/panel-combos.png", alt: "Constructor de PCs y combos compatibles", width: 1889, height: 863 },
   { src: "/casos/tryhardware/panel-ordenes.png", alt: "Órdenes de compra automáticas por proveedor", width: 1893, height: 862 },
-  { src: "/casos/tryhardware/panel-descripciones.png", alt: "Descripciones generadas con Gemini 2.5 Flash", width: 1340, height: 761 },
+  { src: "/casos/tryhardware/panel-descripciones.png", alt: "Descripciones de productos escritas con inteligencia artificial", width: 1340, height: 761 },
 ]
 
-const panelLabels = ["Dashboard", "Catálogo unificado", "Motor de pricing", "Constructor de PCs", "Órdenes de compra", "Descripciones con IA"]
+const panelLabels = ["Resumen", "Productos", "Alertas de precio", "Armado de PCs", "Órdenes de compra", "Descripciones con IA"]
 
 const navButton =
   "flex items-center gap-1 rounded-full border border-sand px-4 py-2 text-sm text-ink-soft transition-[color,border-color,transform] duration-150 ease-out hover:border-ink hover:text-ink active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-30"
