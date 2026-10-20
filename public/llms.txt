@@ -1,0 +1,23 @@
+# Avanzio
+
+> Software a medida para PyMEs de Argentina: sistemas de gestión, tiendas online y automatizaciones. Equipo de tres desarrolladores de Buenos Aires (Iván, Magalí y Julián) que atiende directo, sin intermediarios. El contacto principal es por WhatsApp (+54 9 11 7063-0456) o por mail (hola@avanzio.ar).
+
+Trabajamos con dueños de PyMEs que hoy manejan su negocio con planillas de Excel, WhatsApp, Instagram y cuadernos. La primera charla es gratis; la propuesta se entrega por escrito con alcance, precio y plazos antes de arrancar. En general se paga la mitad al empezar y la mitad al terminar. El sistema, los datos y las cuentas quedan a nombre del cliente.
+
+## Servicios
+
+- [Sistemas de gestión](https://avanzio.ar/servicios#gestion): stock, precios, pedidos y clientes en un solo panel, con alertas de reposición y precios que se actualizan en todos lados.
+- [Tiendas online](https://avanzio.ar/servicios#tienda): tienda propia pensada para el celular, con MercadoPago, envíos y stock conectado.
+- [Automatizaciones](https://avanzio.ar/servicios#automatizacion): cobros, avisos por WhatsApp y mail, facturación y reportes que funcionan solos.
+
+## Casos
+
+- [TryHardware](https://avanzio.ar/casos/tryhardware): tienda online y panel de gestión para un negocio de hardware de Banfield. El panel calcula los precios de 13 proveedores y sincroniza la tienda cada 15 minutos.
+- [Santa Benedetta](https://avanzio.ar/casos/santa-benedetta): de pedidos por Instagram a una tienda propia con combos para armar, stock y pagos online.
+- [Troncone Motors](https://avanzio.ar/casos/troncone-motors): sitio web y catálogo de autos para una concesionaria familiar de Burzaco.
+- [Todos los casos](https://avanzio.ar/casos): también G3D (impresión 3D) y Motora, nuestro sistema de gestión para concesionarias.
+
+## Más
+
+- [Nosotros](https://avanzio.ar/nosotros): quiénes somos y cómo trabajamos.
+- [Contacto](https://avanzio.ar/contacto): WhatsApp, mail, horarios y formulario.

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { CaseHero, CaseProse, CaseShowcase, FeatureGrid, NextCase, PainGrid, ResultsBlock } from "@/components/case/case-sections";
 import { FinalCta } from "@/components/sections/final-cta";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Troncone Motors, caso de éxito",
+export const metadata: Metadata = pageMetadata({
+  title: "Caso Troncone Motors: web y catálogo de autos",
   description:
-    "Cómo construimos la web de Troncone Motors, concesionaria familiar en Burzaco, con catálogo de vehículos online, financiamiento y gestión integral.",
-};
+    "Cómo una concesionaria familiar de Burzaco pasó de no tener web a mostrar su catálogo de autos y el financiamiento BNA+ desde la home.",
+  path: "/casos/troncone-motors", image: "/og/troncone-motors.jpg",
+});
 
 const painPoints = [
   {
@@ -64,6 +67,7 @@ const results = [
 export default function TronconeMotorsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Casos", path: "/casos" }, { name: "Troncone Motors", path: "/casos/troncone-motors" }])} />
       <CaseHero
         kind="Sitio web corporativo"
         name="Troncone Motors"

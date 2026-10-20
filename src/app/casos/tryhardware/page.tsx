@@ -6,12 +6,15 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { Icon } from "@/components/ui/icon";
 import { Section } from "@/components/ui/section";
 import { PanelGallery, TiendaGallery } from "./interactive";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "TryHardware: caso de éxito",
+export const metadata: Metadata = pageMetadata({
+  title: "Caso TryHardware: tienda online y panel de gestión",
   description:
-    "Cómo rediseñamos la tienda online y construimos el panel de gestión de TryHardware: desde una tienda lenta sin pagos hasta 100+ pedidos mensuales y 5 horas diarias liberadas con automatización.",
-};
+    "Rediseñamos la tienda online de TryHardware y construimos un panel que calcula solo los precios de 13 proveedores: de unos 30 a más de 100 pedidos por mes.",
+  path: "/casos/tryhardware", image: "/og/tryhardware.jpg",
+});
 
 const projects = [
   { id: "tienda-online", name: "Tienda online", duration: "3 meses" },
@@ -115,6 +118,7 @@ function ProjectIntro({
 export default function TryHardwarePage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Casos", path: "/casos" }, { name: "TryHardware", path: "/casos/tryhardware" }])} />
       <CaseHero
         kind="Tienda online y panel de gestión"
         name="TryHardware"

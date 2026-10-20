@@ -5,11 +5,15 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Section } from "@/components/ui/section";
 import { site } from "@/content/site";
 import { waLink, waMessage } from "@/lib/whatsapp";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contacto",
-  description: "Contanos qué te frena. La primera charla es gratis y sin compromiso. Escribinos por WhatsApp o por mail.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Contacto: escribinos por WhatsApp",
+  description:
+    "Contanos qué te frena. Te respondemos el mismo día hábil y la primera charla es gratis. WhatsApp +54 9 11 7063-0456 o hola@avanzio.ar.",
+  path: "/contacto",
+});
 
 /** Lo que pasa después de escribir. Los tiempos salen del flujo comercial (docs/clientes/flujo-comercial.md). */
 const nextSteps = [
@@ -21,6 +25,7 @@ const nextSteps = [
 export default function ContactoPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Contacto", path: "/contacto" }])} />
       <PageHeader
         title={
           <>

@@ -10,16 +10,21 @@ import { Section } from "@/components/ui/section";
 import { faqFor } from "@/content/faq";
 import { services } from "@/content/services";
 import { waLink } from "@/lib/whatsapp";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Servicios",
+export const metadata: Metadata = pageMetadata({
+  title: "Servicios: sistemas de gestión y tiendas online",
   description:
-    "Sistemas de gestión, tiendas online y automatizaciones para PyMEs. Stock, precios y pedidos en un solo lugar.",
-};
+    "Sistemas de gestión a medida, tiendas online con MercadoPago y automatizaciones para PyMEs de Argentina. La primera charla es gratis.",
+  path: "/servicios",
+});
 
 export default function ServiciosPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Servicios", path: "/servicios" }])} />
+      <JsonLd data={faqSchema(faqFor("servicios"))} />
       <PageHeader
         title={
           <>

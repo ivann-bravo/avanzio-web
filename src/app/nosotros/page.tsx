@@ -1,16 +1,20 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import AvanzioLogo from "@/components/avanzio-logo";
 import { FinalCta } from "@/components/sections/final-cta";
 import { PageHeader } from "@/components/sections/page-header";
 import { Section } from "@/components/ui/section";
 import { team } from "@/content/team";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Nosotros",
+export const metadata: Metadata = pageMetadata({
+  title: "Nosotros: el equipo detrás de Avanzio",
   description:
-    "Somos tres desarrolladores de Buenos Aires que construyen software a medida para PyMEs argentinas con proyección LATAM.",
-};
+    "Somos Iván, Magalí y Julián, desarrolladores de Buenos Aires. Hacemos sistemas a medida para PyMEs y te atendemos directo, sin intermediarios.",
+  path: "/nosotros",
+});
 
 /** Compromisos concretos: salen de las condiciones comerciales y del flujo de trabajo definidos por el equipo. */
 const commitments = [
@@ -31,6 +35,7 @@ const stagger = (i: number) => ({ "--reveal-delay": `${i * 80}ms` }) as CSSPrope
 export default function NosotrosPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Nosotros", path: "/nosotros" }])} />
       <PageHeader
         title={
           <>
@@ -66,17 +71,25 @@ export default function NosotrosPage() {
         </h2>
         <ul className="mt-12 grid gap-4 sm:grid-cols-3">
           {team.map((m, i) => (
-            <li key={m.name} className="reveal rounded-[var(--radius-card)] border border-sand bg-paper p-7" style={stagger(i)}>
-              <span aria-hidden="true" className="grid size-16 place-items-center rounded-full bg-ink text-lg font-bold text-paper">
-                {m.initials}
-              </span>
-              <h3 className="mt-6 text-title text-2xl">{m.name}</h3>
-              <p className="mt-1 font-semibold text-violet">{m.role}</p>
-              <p className="mt-3 leading-relaxed text-ink-soft">{m.focus}</p>
-              <p className="mt-5 border-t border-sand pt-4 text-ink-soft">
-                <span className="font-semibold text-ink">Lo que más disfruta: </span>
-                {m.likes}
-              </p>
+            <li key={m.name} className="reveal overflow-hidden rounded-[var(--radius-card)] border border-sand bg-paper" style={stagger(i)}>
+              <div className="relative aspect-square bg-violet">
+                <Image
+                  src={m.photo}
+                  alt={`${m.name}, de Avanzio`}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-7">
+                <h3 className="text-title text-2xl">{m.name}</h3>
+                <p className="mt-1 font-semibold text-violet">{m.role}</p>
+                <p className="mt-3 leading-relaxed text-ink-soft">{m.focus}</p>
+                <p className="mt-5 border-t border-sand pt-4 text-ink-soft">
+                  <span className="font-semibold text-ink">Lo que más disfruta: </span>
+                  {m.likes}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

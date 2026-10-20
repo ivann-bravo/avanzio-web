@@ -1,15 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import { team } from "@/content/team";
 
-/** "Hablás con quienes programan." Las iniciales esperan las fotos reales del equipo. */
+/** "Hablás con quienes programan.", con las caras de los tres. */
 export function TeamStrip({ className = "" }: { className?: string }) {
   return (
     <div className={`reveal grid gap-8 border-t border-bone-on-ink/25 pt-12 md:grid-cols-[auto_1fr] md:items-center ${className}`}>
       <ul className="flex -space-x-4" aria-label="Equipo">
         {team.map((m) => (
-          <li key={m.name} className="grid size-20 place-items-center rounded-full bg-paper text-lg font-bold text-ink ring-4 ring-ink">
-            <span aria-hidden="true">{m.initials}</span>
-            <span className="sr-only">{m.name}</span>
+          <li key={m.name} className="relative size-20 overflow-hidden rounded-full bg-violet ring-4 ring-ink">
+            <Image src={m.photo} alt={m.name} fill sizes="80px" className="object-cover" />
           </li>
         ))}
       </ul>

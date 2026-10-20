@@ -10,12 +10,15 @@ import {
   ResultsBlock,
 } from "@/components/case/case-sections";
 import { FinalCta } from "@/components/sections/final-cta";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Santa Benedetta, caso de éxito",
+export const metadata: Metadata = pageMetadata({
+  title: "Caso Santa Benedetta: tienda con combos y stock",
   description:
-    "Cómo transformamos el caos de pedidos por WhatsApp e Instagram en una tienda online con gestión de stock, combos armables y control de finanzas en tiempo real.",
-};
+    "De pedidos por Instagram a una tienda propia con combos para armar, stock y pagos online. La primera versión salió en un mes.",
+  path: "/casos/santa-benedetta", image: "/og/santa-benedetta.jpg",
+});
 
 const painPoints = [
   {
@@ -73,6 +76,7 @@ const results = [
 export default function SantaBenedettaPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Inicio", path: "" }, { name: "Casos", path: "/casos" }, { name: "Santa Benedetta", path: "/casos/santa-benedetta" }])} />
       <CaseHero
         kind="Tienda online y sistema de gestión"
         name="Santa Benedetta"
