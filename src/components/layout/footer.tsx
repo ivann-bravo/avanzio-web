@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AvanzioLogo from "@/components/avanzio-logo";
+import { Icon } from "@/components/ui/icon";
 import { site, type SocialLink } from "@/content/site";
 import { waLink } from "@/lib/whatsapp";
 
@@ -48,7 +49,8 @@ export function Footer() {
           </li>
           {socials.map((s) => (
             <li key={s.label}>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 ${linkClass}`}>
+                <Icon name={s.icon} className="size-5" />
                 {s.label}
               </a>
             </li>

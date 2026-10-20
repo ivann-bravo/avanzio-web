@@ -1,6 +1,8 @@
 import {
   IconArrowRight,
   IconArrowUpRight,
+  IconBrandInstagram,
+  IconBrandLinkedin,
   IconBrandWhatsapp,
   IconCheck,
   IconMail,
@@ -12,6 +14,8 @@ import {
 
 const ICONS = {
   whatsapp: IconBrandWhatsapp,
+  instagram: IconBrandInstagram,
+  linkedin: IconBrandLinkedin,
   "arrow-right": IconArrowRight,
   "arrow-up-right": IconArrowUpRight,
   mail: IconMail,

@@ -1,4 +1,6 @@
-export type SocialLink = { label: string; url: string | null };
+import type { IconName } from "@/components/ui/icon";
+
+export type SocialLink = { label: string; url: string | null; icon: IconName };
 
 type Site = {
   email: string;
@@ -12,7 +14,7 @@ export const site: Site = {
   whatsappDisplay: "+54 9 11 7063-0456",
   hours: ["Lun a vie · 9 a 18 h", "Sáb · 9 a 12 h"],
   social: [
-    { label: "Instagram", url: null },
-    { label: "LinkedIn", url: null },
+    { label: "Instagram", url: "https://www.instagram.com/avanzio.ar/", icon: "instagram" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/company/avanzioar/", icon: "linkedin" },
   ],
 };

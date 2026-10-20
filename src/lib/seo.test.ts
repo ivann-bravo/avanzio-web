@@ -51,6 +51,13 @@ describe("SEO", () => {
     expect(JSON.stringify(org.areaServed)).toContain("Argentina");
   });
 
+  it("la organización enlaza los perfiles de Instagram y LinkedIn", () => {
+    expect(organizationSchema().sameAs).toEqual([
+      "https://www.instagram.com/avanzio.ar/",
+      "https://www.linkedin.com/company/avanzioar/",
+    ]);
+  });
+
   it("las preguntas frecuentes se publican como FAQPage con las mismas respuestas", () => {
     const items = faqFor("home");
     const schema = faqSchema(items);
