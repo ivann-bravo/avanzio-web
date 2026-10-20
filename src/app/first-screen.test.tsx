@@ -25,15 +25,29 @@ describe("primera pantalla sin depender de JS", () => {
     expect(html).toMatch(/<h2 id="historia-title" class="hero-rise /);
   });
 
-  it("Casos: el primer caso entra con hero-rise y el resto sigue con reveal", () => {
+  it("Casos: cada proyecto es una fila y el primero entra con hero-rise", () => {
     const html = renderToStaticMarkup(<CasosPage />);
-    expect(html).toMatch(/<a href="\/casos\/tryhardware" class="hero-rise /);
-    expect(html).toMatch(/<a href="\/casos\/santa-benedetta" class="reveal /);
+    const rows = html.match(/<article[^>]*>/g) ?? [];
+    expect(rows).toHaveLength(5);
+    expect(rows[0]).toContain("hero-rise");
+    expect(rows[1]).toContain("reveal");
+    expect(html).toMatch(/<h2[^>]*>TryHardware<\/h2>/);
   });
 
-  it("Casos: el listado tiene un h2 para que los títulos no salten de h1 a h3", () => {
+  it("Casos: cada fila dice el rubro, el estado, el antes y el hoy, y qué construimos", () => {
     const html = renderToStaticMarkup(<CasosPage />);
-    expect(html).toMatch(/<section aria-labelledby="listado-title"[^>]*>[\s\S]*<h2 id="listado-title" class="sr-only">/);
+    for (const text of ["Funcionando", "En lanzamiento", "Antes", "Hoy", "Tienda online", "Panel de gestión"]) {
+      expect(html).toContain(text);
+    }
+  });
+
+  it("Casos: los que tienen página llevan a verla y los demás abren WhatsApp nombrando el proyecto", () => {
+    const html = renderToStaticMarkup(<CasosPage />);
+    for (const slug of ["tryhardware", "santa-benedetta", "troncone-motors"]) {
+      expect(html).toMatch(new RegExp(`<a href="/casos/${slug}"[^>]*>[\\s\\S]*?Ver el caso`));
+    }
+    expect(html).toContain(encodeURIComponent("el caso de G3D"));
+    expect(html).toContain(encodeURIComponent("el caso de Motora"));
   });
 
   it("Servicios: los botones de arriba usan etiquetas cortas y cada servicio tiene su frase antes del botón", () => {

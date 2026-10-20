@@ -36,14 +36,11 @@ export function CaseCard({
   variant = "compact",
   className = "",
   index = 0,
-  rise = false,
 }: {
   item: CaseStudy;
   variant?: CaseCardVariant;
   className?: string;
   index?: number;
-  /** Entra con `hero-rise` (sin esperar al JS) cuando la tarjeta está en la primera pantalla. */
-  rise?: boolean;
 }) {
   const dark = variant === "ink";
   const body: ReactNode = (
@@ -79,7 +76,7 @@ export function CaseCard({
     </>
   );
 
-  const classes = `${rise ? "hero-rise" : "reveal"} group flex flex-col overflow-hidden rounded-[var(--radius-card)] ${
+  const classes = `reveal group flex flex-col overflow-hidden rounded-[var(--radius-card)] ${
     dark ? "bg-ink text-paper" : "border border-sand bg-paper"
   } ${className}`;
   const style = { "--reveal-delay": `${index * 80}ms` } as CSSProperties;
