@@ -12,4 +12,8 @@ describe("metadatos del sitio", () => {
   it("usa avanzio.ar, el dominio principal (avanzio.com.ar redirige ahí)", () => {
     expect(metadata.metadataBase?.toString()).toBe("https://avanzio.ar/");
   });
+
+  it("incluye la verificación de Google Search Console", () => {
+    expect(metadata.verification?.google).toBe("J0XncEn9cf--P-7bvSKuftcsfPnlJZNidQ_N2oFg6VA");
+  });
 });

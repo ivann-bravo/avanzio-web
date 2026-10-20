@@ -42,6 +42,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Avanzio", url: SITE_URL }],
   creator: "Avanzio",
   formatDetection: { telephone: false },
+  verification: { google: "J0XncEn9cf--P-7bvSKuftcsfPnlJZNidQ_N2oFg6VA" },
   openGraph: OPEN_GRAPH_BASE,
 };
 
