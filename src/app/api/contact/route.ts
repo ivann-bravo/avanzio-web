@@ -19,9 +19,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Datos inválidos.", fields: parsed.errors }, { status: 400 });
   }
 
-  // Con la clave de Cloudflare Turnstile configurada, solo pasan los envíos que Cloudflare valida como humanos.
+  // Con las dos claves de Cloudflare Turnstile configuradas, solo pasan los envíos que Cloudflare valida como humanos.
+  // Si falta la pública, el widget no se muestra y nadie podría verificarse: en ese caso no se exige.
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
-  if (turnstileSecret) {
+  if (turnstileSecret && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) {
     const token = (body as Record<string, unknown>)[TURNSTILE_FIELD];
     const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
     if (typeof token !== "string" || !token || !(await verifyTurnstile(token, turnstileSecret, ip))) {

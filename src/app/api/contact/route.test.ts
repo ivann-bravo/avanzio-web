@@ -72,8 +72,19 @@ describe("POST /api/contact", () => {
     expect(sent.html).toContain("https://wa.me/5491170630456");
   });
 
+  it("con la clave secreta pero sin la pública, no exige verificación (el widget no se muestra y nadie podría pasarla)", async () => {
+    vi.stubEnv("TURNSTILE_SECRET_KEY", "secreto");
+    vi.stubEnv("NEXT_PUBLIC_TURNSTILE_SITE_KEY", "");
+    const res = await post(JSON.stringify(valid));
+    expect(res.status).toBe(200);
+    expect(send).toHaveBeenCalledOnce();
+  });
+
   describe("con Turnstile configurado", () => {
-    beforeEach(() => vi.stubEnv("TURNSTILE_SECRET_KEY", "secreto"));
+    beforeEach(() => {
+      vi.stubEnv("TURNSTILE_SECRET_KEY", "secreto");
+      vi.stubEnv("NEXT_PUBLIC_TURNSTILE_SITE_KEY", "publica");
+    });
 
     it("rechaza con 400 si falta el token", async () => {
       const res = await post(JSON.stringify(valid));
