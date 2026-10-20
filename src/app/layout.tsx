@@ -30,7 +30,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://avanzio.com.ar"),
+  metadataBase: new URL("https://avanzio.ar"),
   title: {
     template: "%s | Avanzio",
     default: "Avanzio · Software a medida para PyMEs",
