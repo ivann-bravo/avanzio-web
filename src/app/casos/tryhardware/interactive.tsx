@@ -26,14 +26,14 @@ function Lightbox({
   startIndex?: number
   onClose: () => void
 }) {
+  // Se monta recién al tocar una captura (nunca en el servidor) y se desmonta al cerrar:
+  // cada apertura arranca de cero en startIndex, así que no hace falta sincronizarlo.
   const [idx, setIdx] = useState(startIndex)
-  const [mounted, setMounted] = useState(false)
   const item = items[idx]
   const hasPrev = idx > 0
   const hasNext = idx < items.length - 1
 
   useEffect(() => {
-    setMounted(true)
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
       if (e.key === "ArrowRight" && idx < items.length - 1) setIdx((i) => i + 1)
@@ -55,15 +55,8 @@ function Lightbox({
     }
   }, [])
   useEffect(() => {
-    if (mounted) closeButton.current?.focus()
-  }, [mounted])
-
-  // Sincroniza el índice cuando el lightbox se reabre en otra captura
-  useEffect(() => {
-    setIdx(startIndex)
-  }, [startIndex])
-
-  if (!mounted) return null
+    closeButton.current?.focus()
+  }, [])
 
   const arrowClasses =
     "flex w-11 shrink-0 items-center justify-center text-bone/70 transition-[color,transform] duration-150 ease-out hover:text-bone active:scale-[0.97] disabled:cursor-default disabled:text-bone/10"
